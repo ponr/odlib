@@ -18,6 +18,8 @@ public:
     GLContext();
     virtual ~GLContext();
 
+    virtual void unload();
+
 private:
     GLVersion mGLVersion;
     bool mInitialized;

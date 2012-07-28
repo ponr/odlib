@@ -17,6 +17,8 @@ public:
     GLGeometryShader();
     virtual ~GLGeometryShader();
 
+    bool compile();
+    void unload();
 };
 
 }

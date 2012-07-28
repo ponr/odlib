@@ -17,6 +17,8 @@ public:
     GLFragmentShader();
     virtual ~GLFragmentShader();
 
+    bool compile();
+    void unload();
 };
 
 }

@@ -19,7 +19,6 @@ public:
 
 protected:
     Context();
-    virtual void unload() = 0;
 
 private:
     Context(const Context&);

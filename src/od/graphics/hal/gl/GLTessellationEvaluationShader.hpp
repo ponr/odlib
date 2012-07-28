@@ -18,6 +18,8 @@ public:
     GLTessellationEvaluationShader();
     virtual ~GLTessellationEvaluationShader();
 
+    bool compile();
+    void unload();
 };
 
 }

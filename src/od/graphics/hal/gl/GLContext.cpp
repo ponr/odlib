@@ -16,6 +16,11 @@ GLContext::~GLContext()
 {
 }
 
+void GLContext::unload()
+{
+    // TODO: Unload code
+}
+
 }
 }
 }

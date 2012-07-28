@@ -17,6 +17,8 @@ public:
     GLVertexShader();
     virtual ~GLVertexShader();
 
+    bool compile();
+    void unload();
 };
 
 }

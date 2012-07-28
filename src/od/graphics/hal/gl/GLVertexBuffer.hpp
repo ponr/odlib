@@ -17,6 +17,7 @@ public:
     GLVertexBuffer();
     virtual ~GLVertexBuffer();
 
+    void unload();
 };
 
 }

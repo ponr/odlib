@@ -1,4 +1,11 @@
 #include "GLDevice.hpp"
+#include "GLContext.hpp"
+#include "GLVertexShader.hpp"
+#include "GLTessellationControlShader.hpp"
+#include "GLTessellationEvaluationShader.hpp"
+#include "GLGeometryShader.hpp"
+#include "GLFragmentShader.hpp"
+#include "GLShaderProgram.hpp"
 
 namespace od {
 namespace graphics {
@@ -12,6 +19,38 @@ GLDevice::GLDevice() :
 
 GLDevice::~GLDevice()
 {
+}
+
+od::graphics::hal::Context* GLDevice::createContext()
+{
+    return new GLContext();
+}
+
+od::graphics::hal::VertexShader* GLDevice::createVertexShader()
+{
+    return new GLVertexShader();
+}
+
+od::graphics::hal::TessellationControlShader*
+    GLDevice::createTessellationControlShader()
+{
+    return new GLTessellationControlShader();
+}
+
+od::graphics::hal::TessellationEvaluationShader*
+    GLDevice::createTessellationEvaluationShader()
+{
+    return new GLTessellationEvaluationShader();
+}
+
+od::graphics::hal::GeometryShader* GLDevice::createGeometryShader()
+{
+    return new GLGeometryShader();
+}
+
+od::graphics::hal::FragmentShader* GLDevice::createFragmentShader()
+{
+    return new GLFragmentShader();
 }
 
 }
