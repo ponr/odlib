@@ -1,0 +1,20 @@
+#ifndef OD_GRAPHICS_HAL_DEVICETYPE_HPP
+#define OD_GRAPHICS_HAL_DEVICETYPE_HPP
+
+namespace od {
+namespace graphics {
+namespace hal {
+
+enum DeviceType {
+    DEVICETYPE_DEFAULT = 0,
+    DEVICETYPE_OPENGL3 = 1,
+    DEVICETYPE_OPENGL4 = 2,
+    DEVICETYPE_OPENGLES2 = 10,
+    DEVICETYPE_DIRECT3D11 = 20
+};
+
+}
+}
+}
+
+#endif /* OD_GRAPHICS_HAL_DEVICETYPE_HPP */
