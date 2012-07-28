@@ -33,6 +33,26 @@ set(OD_GRAPHICS_SRC
     od/graphics/hal/FragmentShader.hpp
     od/graphics/hal/ShaderProgram.cpp
     od/graphics/hal/ShaderProgram.hpp
+    od/graphics/hal/gl/GLTexture.cpp
+    od/graphics/hal/gl/GLTexture.hpp
+    od/graphics/hal/gl/GLContext.cpp
+    od/graphics/hal/gl/GLContext.hpp
+    od/graphics/hal/gl/GLDevice.cpp
+    od/graphics/hal/gl/GLDevice.hpp
+    od/graphics/hal/gl/GLFragmentShader.cpp
+    od/graphics/hal/gl/GLFragmentShader.hpp
+    od/graphics/hal/gl/GLGeometryShader.cpp
+    od/graphics/hal/gl/GLGeometryShader.hpp
+    od/graphics/hal/gl/GLShaderProgram.cpp
+    od/graphics/hal/gl/GLShaderProgram.hpp
+    od/graphics/hal/gl/GLTessellationControlShader.cpp
+    od/graphics/hal/gl/GLTessellationControlShader.hpp
+    od/graphics/hal/gl/GLTessellationEvaluationShader.cpp
+    od/graphics/hal/gl/GLTessellationEvaluationShader.hpp
+    od/graphics/hal/gl/GLVertexBuffer.cpp
+    od/graphics/hal/gl/GLVertexBuffer.hpp
+    od/graphics/hal/gl/GLVertexShader.cpp
+    od/graphics/hal/gl/GLVertexShader.hpp
     )
 
 #add_library(od_core ${OD_CORE_SRC})
