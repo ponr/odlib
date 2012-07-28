@@ -4,6 +4,7 @@
 #define OD_GRAPHICS_HAL_GL_GLCONTEXT_HPP
 
 #include "../Context.hpp"
+#include "GLVersion.hpp"
 
 namespace od {
 namespace graphics {
@@ -17,6 +18,9 @@ public:
     GLContext();
     virtual ~GLContext();
 
+private:
+    GLVersion mGLVersion;
+    bool mInitialized;
 };
 
 }

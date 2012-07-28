@@ -6,7 +6,9 @@ namespace hal {
 namespace gl {
 
 GLContext::GLContext() :
-    od::graphics::hal::Context()
+    od::graphics::hal::Context(),
+    mGLVersion(GLVERSION_GL4),
+    mInitialized(false)
 {
 }
 
