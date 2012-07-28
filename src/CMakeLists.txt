@@ -33,6 +33,7 @@ set(OD_GRAPHICS_SRC
     od/graphics/hal/FragmentShader.hpp
     od/graphics/hal/ShaderProgram.cpp
     od/graphics/hal/ShaderProgram.hpp
+    od/graphics/hal/gl/GLVersion.hpp
     od/graphics/hal/gl/GLTexture.cpp
     od/graphics/hal/gl/GLTexture.hpp
     od/graphics/hal/gl/GLContext.cpp
