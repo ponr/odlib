@@ -6,6 +6,11 @@
 #include "../Device.hpp"
 #include "../DeviceFactory.hpp"
 #include "../DeviceResourceManager.hpp"
+#include "../../../core/types.hpp"
+
+#ifdef GLFW
+#include <GL/glfw.h>
+#endif /* GLFW */
 
 namespace od {
 namespace graphics {
@@ -24,45 +29,57 @@ public:
 
     /// Create context.
     /// @return Pointer to context.
-    virtual Context* createContext();
+    Context* createContext();
 
     /// Create texture.
     /// @return Pointer to texture.
-    virtual Texture* createTexture();
+    Texture* createTexture();
 
     /// Create vertex buffer.
     /// @return Pointer to vertex buffer.
-    virtual VertexBuffer* createVertexBuffer();
+    VertexBuffer* createVertexBuffer();
 
     /// Create vertex shader.
     /// @return Pointer to vertex shader.
-    virtual VertexShader* createVertexShader();
+    VertexShader* createVertexShader();
 
     /// Create tessellation control shader.
     /// @return Pointer to tessellation control shader.
-    virtual TessellationControlShader* createTessellationControlShader();
+    TessellationControlShader* createTessellationControlShader();
 
     /// Create tessellation evaluation shader.
     /// @return Pointer to tessellation evaluation shader.
-    virtual TessellationEvaluationShader*
+    TessellationEvaluationShader*
         createTessellationEvaluationShader();
 
     /// Create geometry shader.
     /// @return Pointer to geometry shader.
-    virtual GeometryShader* createGeometryShader();
+    GeometryShader* createGeometryShader();
 
     /// Create fragment shader.
     /// @return Pointer to fragment shader.
-    virtual FragmentShader* createFragmentShader();
+    FragmentShader* createFragmentShader();
 
     /// Create shader program.
     /// @return Pointer to shader program.
-    virtual ShaderProgram* createShaderProgram();
+    ShaderProgram* createShaderProgram();
+
+    /// Window resize callback
+    void resize( ODuint16 width, ODuint16 height );
+
+
 
 protected:
     GLDevice();
 
+    bool init();
+
 private:
+#ifdef GLFW
+    void GLFWCALL GLFW_ResizeCallback( int width, int height );
+#endif /* GLFW */
+
+    // Resource manager
     od::graphics::hal::DeviceResourceManager mDeviceResourceManager;
 
 };

@@ -66,6 +66,9 @@ public:
 protected:
     Device();
 
+    /// Derived class must implement this
+    virtual bool init() = 0;
+
 private:
     Device(const Device&);
     Device& operator= (const Device&);
