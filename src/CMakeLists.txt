@@ -56,6 +56,23 @@ set(OD_GRAPHICS_SRC
     od/graphics/hal/gl/GLVertexShader.hpp
     )
 
-#add_library(od_core ${OD_CORE_SRC})
-add_library(od_graphics ${OD_GRAPHICS_SRC})
+#add_library(od_core SHARED ${OD_CORE_SRC})
+add_library(od_graphics SHARED ${OD_GRAPHICS_SRC})
+
+SET(OD_GRAPHICS_LIBRARIES "" )
+
+if(GLFW_FOUND)
+    SET(OD_GRAPHICS_LIBRARIES
+        ${OD_GRAPHICS_LIBRARIES}
+        ${GLFW_LIBRARIES}
+    )
+endif()
+
+if(GLEW_FOUND)
+    SET(OD_GRAPHICS_LIBRARIES
+        ${OD_GRAPHICS_LIBRARIES}
+        ${GLEW_LIBRARIES})
+endif()
+
+target_link_libraries(od_graphics ${OD_GRAPHICS_LIBRARIES})
 
