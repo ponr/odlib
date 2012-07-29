@@ -61,6 +61,21 @@ od::graphics::hal::FragmentShader* GLDevice::createFragmentShader()
     return new GLFragmentShader();
 }
 
+od::graphics::hal::ShaderProgram* GLDevice::createShaderProgram()
+{
+    return new GLShaderProgram();
+}
+
+void GLDevice::resize(ODuint16 width, ODuint16 height)
+{
+    // TODO: Resize code
+}
+
+DeviceType GLDevice::getType() const
+{
+    return od::graphics::hal::DEVICETYPE_OPENGLES2;
+}
+
 bool GLDevice::init()
 {
 #ifdef GLFW

@@ -4,9 +4,10 @@
 #define OD_GRAPHICS_HAL_GL_GLDEVICE_HPP
 
 #include "../Device.hpp"
-#include "../DeviceFactory.hpp"
 #include "../DeviceResourceManager.hpp"
 #include "../../../core/types.hpp"
+
+#include "OpenGL.hpp"
 
 #ifdef GLFW
 #include <GL/glfw.h>
@@ -15,6 +16,9 @@
 namespace od {
 namespace graphics {
 namespace hal {
+
+class DeviceFactory;
+
 namespace gl {
 
 /// GL Device class
@@ -65,9 +69,13 @@ public:
     ShaderProgram* createShaderProgram();
 
     /// Window resize callback
+    /// @param width Width of window
+    /// @param height Height of window
     void resize( ODuint16 width, ODuint16 height );
 
-
+    /// Get type of the device
+    /// @return Type of the device
+    DeviceType getType() const;
 
 protected:
     GLDevice();

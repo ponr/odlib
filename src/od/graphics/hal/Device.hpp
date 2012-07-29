@@ -2,6 +2,8 @@
 #ifndef OD_GRAPHICS_HAL_DEVICE_HPP
 #define OD_GRAPHICS_HAL_DEVICE_HPP
 
+#include "DeviceType.hpp"
+
 namespace od {
 namespace graphics {
 namespace hal {
@@ -62,6 +64,10 @@ public:
     /// Create shader program.
     /// @return Pointer to shader program.
     virtual ShaderProgram* createShaderProgram() = 0;
+
+    /// Get type of the device
+    /// @return Type of the device
+    virtual DeviceType getType() const = 0;
 
 protected:
     Device();
