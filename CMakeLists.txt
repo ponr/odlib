@@ -58,4 +58,5 @@ if(DEFINED WIN64)
 endif()
 
 add_subdirectory(src)
+add_subdirectory(examples)
 #add_subdirectory(tests)
