@@ -14,6 +14,10 @@ GLVertexBuffer::~GLVertexBuffer()
 {
 }
 
+void GLVertexBuffer::unload()
+{
+}
+
 }
 }
 }

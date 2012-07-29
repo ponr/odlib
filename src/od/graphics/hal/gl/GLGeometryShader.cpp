@@ -14,6 +14,14 @@ GLGeometryShader::~GLGeometryShader()
 {
 }
 
+bool GLGeometryShader::compile()
+{
+}
+
+void GLGeometryShader::unload()
+{
+}
+
 }
 }
 }

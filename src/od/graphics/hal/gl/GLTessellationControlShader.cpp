@@ -14,6 +14,14 @@ GLTessellationControlShader::~GLTessellationControlShader()
 {
 }
 
+bool GLTessellationControlShader::compile()
+{
+}
+
+void GLTessellationControlShader::unload()
+{
+}
+
 }
 }
 }

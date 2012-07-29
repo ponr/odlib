@@ -17,6 +17,7 @@ public:
     GLTexture();
     virtual ~GLTexture();
 
+    void unload();
 };
 
 }

@@ -14,6 +14,14 @@ GLFragmentShader::~GLFragmentShader()
 {
 }
 
+bool GLFragmentShader::compile()
+{
+}
+
+void GLFragmentShader::unload()
+{
+}
+
 }
 }
 }

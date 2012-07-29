@@ -14,6 +14,10 @@ GLTexture::~GLTexture()
 {
 }
 
+void GLTexture::unload()
+{
+}
+
 }
 }
 }

@@ -14,6 +14,14 @@ GLVertexShader::~GLVertexShader()
 {
 }
 
+bool GLVertexShader::compile()
+{
+}
+
+void GLVertexShader::unload()
+{
+}
+
 }
 }
 }

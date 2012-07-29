@@ -14,6 +14,14 @@ GLTessellationEvaluationShader::~GLTessellationEvaluationShader()
 {
 }
 
+bool GLTessellationEvaluationShader::compile()
+{
+}
+
+void GLTessellationEvaluationShader::unload()
+{
+}
+
 }
 }
 }

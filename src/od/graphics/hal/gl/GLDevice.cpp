@@ -1,11 +1,13 @@
 #include "GLDevice.hpp"
 #include "GLContext.hpp"
+#include "GLVertexBuffer.hpp"
 #include "GLVertexShader.hpp"
 #include "GLTessellationControlShader.hpp"
 #include "GLTessellationEvaluationShader.hpp"
 #include "GLGeometryShader.hpp"
 #include "GLFragmentShader.hpp"
 #include "GLShaderProgram.hpp"
+#include "GLTexture.hpp"
 
 namespace od {
 namespace graphics {
@@ -25,6 +27,16 @@ GLDevice::~GLDevice()
 od::graphics::hal::Context* GLDevice::createContext()
 {
     return new GLContext();
+}
+
+od::graphics::hal::Texture* GLDevice::createTexture()
+{
+    return new GLTexture();
+}
+
+od::graphics::hal::VertexBuffer* GLDevice::createVertexBuffer()
+{
+    return new GLVertexBuffer();
 }
 
 od::graphics::hal::VertexShader* GLDevice::createVertexShader()
