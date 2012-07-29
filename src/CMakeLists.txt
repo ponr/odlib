@@ -13,10 +13,12 @@ set(OD_GRAPHICS_SRC
     od/graphics/hal/DeviceResource.hpp
     od/graphics/hal/DeviceResourceManager.cpp
     od/graphics/hal/DeviceResourceManager.hpp
-    od/graphics/hal/Texture.cpp
-    od/graphics/hal/Texture.hpp
+    od/graphics/hal/Window.cpp
+    od/graphics/hal/Window.hpp
     od/graphics/hal/Context.cpp
     od/graphics/hal/Context.hpp
+    od/graphics/hal/Texture.cpp
+    od/graphics/hal/Texture.hpp
     od/graphics/hal/VertexBuffer.cpp
     od/graphics/hal/VertexBuffer.hpp
     od/graphics/hal/Shader.cpp
