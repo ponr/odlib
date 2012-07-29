@@ -9,6 +9,10 @@ Context::Context():
 {
 }
 
+Context::~Context()
+{
+}
+
 }
 }
 }
