@@ -1,5 +1,9 @@
 #include "DeviceFactory.hpp"
 
+#ifdef OPENGL
+#include "gl/GLDevice.hpp"
+#endif /* OPENGL */
+
 #ifdef WIN32
 // TODO: Include D3D device header
 #endif
@@ -51,7 +55,7 @@ Device* DeviceFactory::createDevice(const DeviceType& desiredtype)
     {
     }
 
-    return 0;
+    return new gl::GLDevice();
 }
 
 }
