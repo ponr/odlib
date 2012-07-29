@@ -14,6 +14,14 @@ GLShaderProgram::~GLShaderProgram()
 {
 }
 
+void GLShaderProgram::unload()
+{
+}
+
+void GLShaderProgram::addShader(Shader *shader)
+{
+}
+
 }
 }
 }

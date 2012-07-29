@@ -17,6 +17,9 @@ public:
     GLShaderProgram();
     virtual ~GLShaderProgram();
 
+    void unload();
+    void addShader(Shader *shader);
+
 };
 
 }
