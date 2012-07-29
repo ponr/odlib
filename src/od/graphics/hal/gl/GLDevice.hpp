@@ -83,10 +83,6 @@ protected:
     bool init();
 
 private:
-#ifdef GLFW
-    void GLFWCALL GLFW_ResizeCallback( int width, int height );
-#endif /* GLFW */
-
     // Resource manager
     od::graphics::hal::DeviceResourceManager mDeviceResourceManager;
 

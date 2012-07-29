@@ -12,13 +12,6 @@ namespace graphics {
 namespace hal {
 namespace gl {
 
-#ifdef GLFW
-void GLFWCALL GLDevice::GLFW_ResizeCallback( int width, int height )
-{
-    resize(width, height);
-}
-#endif /* GLFW */
-
 GLDevice::GLDevice() :
     od::graphics::hal::Device()
 {
@@ -84,11 +77,14 @@ bool GLDevice::init()
         return false;
     }
 
+    glfwOpenWindowHint(GLFW_WINDOW_NO_RESIZE, GL_TRUE);
     if(!glfwOpenWindow(300, 300, 0, 0, 0, 0, 0, 0, GLFW_WINDOW))
     {
         glfwTerminate();
         return false;
     }
+
+    return true;
 #else
     return false;
 #endif /* GLFW */
