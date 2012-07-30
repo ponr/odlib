@@ -1,7 +1,7 @@
 /// Window base class
 
-#ifndef OD_GRAPHICS_HAL_WINDOW
-#define OD_GRAPHICS_HAL_WINDOW
+#ifndef OD_GRAPHICS_HAL_WINDOW_HPP
+#define OD_GRAPHICS_HAL_WINDOW_HPP
 
 namespace od {
 namespace graphics {
@@ -29,4 +29,4 @@ private:
 }
 }
 
-#endif /* OD_GRAPHICS_HAL_WINDOW */
+#endif /* OD_GRAPHICS_HAL_WINDOW_HPP */
