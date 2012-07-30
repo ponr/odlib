@@ -1,4 +1,5 @@
 #include "GLDevice.hpp"
+#include "GLWindow.hpp"
 #include "GLContext.hpp"
 #include "GLVertexBuffer.hpp"
 #include "GLVertexShader.hpp"
@@ -22,6 +23,21 @@ GLDevice::GLDevice() :
 GLDevice::~GLDevice()
 {
     glfwTerminate();
+}
+
+od::graphics::hal::Window* GLDevice::createWindow()
+{
+    return 0;
+}
+
+bool GLDevice::setWindow(Window *window)
+{
+    return false;
+}
+
+od::graphics::hal::Window* GLDevice::getWindow()
+{
+    return 0;
 }
 
 od::graphics::hal::Context* GLDevice::createContext()

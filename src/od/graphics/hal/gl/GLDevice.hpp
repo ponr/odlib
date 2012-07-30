@@ -31,6 +31,19 @@ public:
     virtual ~GLDevice();
     // Resource creation
 
+    /// Create window
+    /// @return Pointer to window
+    Window* createWindow();
+
+    /// Set Device to use given Window
+    /// @param window Pointer to window
+    /// @return Bool to tell if set succeeded or not
+    bool setWindow(Window* window);
+
+    /// Get Window of the Device
+    /// @return Pointer to window
+    Window* getWindow();
+
     /// Create context.
     /// @return Pointer to context.
     Context* createContext();
