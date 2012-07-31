@@ -12,6 +12,11 @@ pkg_search_module(GLFW REQUIRED libglfw)
 pkg_search_module(GLEW REQUIRED glew)
 find_package(OpenGL REQUIRED)
 
+find_package(Qt4 4.4.3 COMPONENTS QtCore QtGui QtOpenGL)
+if(QT4_FOUND)
+    include(${QT_USE_FILE})
+endif(QT4_FOUND)
+
 if(OPENGL_FOUND)
     add_definitions(-DOPENGL)
     include_directories(${OPENGL_INCLUDE_DIR})

@@ -65,6 +65,15 @@ if(OPENGL_FOUND)
         od/graphics/hal/gl/GLVertexShader.cpp
         od/graphics/hal/gl/GLVertexShader.hpp
         )
+
+    if(QT4_FOUND)
+        SET(OD_GRAPHICS_SRC
+            ${OD_GRAPHICS_SRC}
+            od/graphics/hal/gl/GLQtWindow.cpp
+            od/graphics/hal/gl/GLQtWindow.hpp
+            )
+    endif(QT4_FOUND)
+
 endif(OPENGL_FOUND)
 
 #add_library(od_core SHARED ${OD_CORE_SRC})
@@ -77,6 +86,14 @@ if(OPENGL_FOUND)
         ${OD_GRAPHICS_LIBRARIES}
         ${OPENGL_LIBRARIES}
     )
+
+    if(QT4_FOUND)
+        SET(OD_GRAPHICS_LIBRARIES
+            ${OD_GRAPHICS_LIBRARIES}
+            ${QT_LIBRARIES}
+            )
+    endif(QT4_FOUND)
+
 endif(OPENGL_FOUND)
 
 if(APPLE)
