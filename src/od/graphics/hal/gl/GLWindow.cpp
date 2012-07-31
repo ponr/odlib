@@ -5,7 +5,8 @@ namespace graphics {
 namespace hal {
 namespace gl {
 
-GLWindow::GLWindow()
+GLWindow::GLWindow() :
+    Window()
 {
 }
 

@@ -16,7 +16,9 @@ namespace hal {
 namespace gl {
 
 GLDevice::GLDevice() :
-    od::graphics::hal::Device()
+    od::graphics::hal::Device(),
+    mWindow(0),
+    mGLWindow(0)
 {
 }
 
@@ -32,12 +34,20 @@ od::graphics::hal::Window* GLDevice::createWindow()
 
 bool GLDevice::setWindow(Window *window)
 {
-    return false;
+    mWindow = window;
+    mGLWindow = dynamic_cast <GLWindow*> (mWindow);
+
+    if(mGLWindow == 0)
+    {
+        return false;
+    }
+
+    return true;
 }
 
 od::graphics::hal::Window* GLDevice::getWindow()
 {
-    return 0;
+    return mWindow;
 }
 
 od::graphics::hal::Context* GLDevice::createContext()

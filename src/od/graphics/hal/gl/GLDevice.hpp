@@ -21,6 +21,8 @@ class DeviceFactory;
 
 namespace gl {
 
+class GLWindow;
+
 /// GL Device class
 class GLDevice : public od::graphics::hal::Device
 {
@@ -98,6 +100,9 @@ protected:
 private:
     // Resource manager
     od::graphics::hal::DeviceResourceManager mDeviceResourceManager;
+
+    od::graphics::hal::Window* mWindow;
+    od::graphics::hal::gl::GLWindow* mGLWindow;
 
 };
 
