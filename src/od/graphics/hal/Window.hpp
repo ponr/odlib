@@ -3,6 +3,8 @@
 #ifndef OD_GRAPHICS_HAL_WINDOW_HPP
 #define OD_GRAPHICS_HAL_WINDOW_HPP
 
+#include "../../core/types.hpp"
+
 namespace od {
 namespace graphics {
 namespace hal {
@@ -18,6 +20,9 @@ public:
 
 protected:
     Window();
+
+    /// Function which will be called on resize
+    virtual void onResize(ODuint16 width, ODuint16 height) = 0;
 
 private:
     Window(const Window&);
