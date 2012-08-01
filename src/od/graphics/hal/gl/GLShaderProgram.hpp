@@ -20,6 +20,9 @@ public:
     void unload();
     void addShader(Shader *shader);
 
+private:
+    GLShaderProgram(const GLShaderProgram&);
+    GLShaderProgram& operator= (const GLShaderProgram&);
 };
 
 }
