@@ -8,7 +8,6 @@ namespace od {
 namespace graphics {
 namespace hal {
 
-class Window;
 class Context;
 class Texture;
 class VertexBuffer;
@@ -28,19 +27,6 @@ public:
     virtual ~Device();
 
     // Resource creation
-
-    /// Create window
-    /// @return Pointer to window
-    virtual Window* createWindow() = 0;
-
-    /// Set Device to use given Window
-    /// @param window Pointer to window
-    /// @return Bool to tell if set succeeded or not
-    virtual bool setWindow(Window* window) = 0;
-
-    /// Get Window of the Device
-    /// @return Pointer to window
-    virtual Window* getWindow() = 0;
 
     /// Create context.
     /// @return Pointer to context.

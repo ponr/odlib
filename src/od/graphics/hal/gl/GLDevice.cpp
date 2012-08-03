@@ -1,5 +1,4 @@
 #include "GLDevice.hpp"
-#include "GLWindow.hpp"
 #include "GLContext.hpp"
 #include "GLVertexBuffer.hpp"
 #include "GLVertexShader.hpp"
@@ -16,38 +15,13 @@ namespace hal {
 namespace gl {
 
 GLDevice::GLDevice() :
-    od::graphics::hal::Device(),
-    mWindow(0),
-    mGLWindow(0)
+    od::graphics::hal::Device()
 {
 }
 
 GLDevice::~GLDevice()
 {
     glfwTerminate();
-}
-
-od::graphics::hal::Window* GLDevice::createWindow()
-{
-    return 0;
-}
-
-bool GLDevice::setWindow(Window *window)
-{
-    mWindow = window;
-    mGLWindow = dynamic_cast <GLWindow*> (mWindow);
-
-    if(mGLWindow == 0)
-    {
-        return false;
-    }
-
-    return true;
-}
-
-od::graphics::hal::Window* GLDevice::getWindow()
-{
-    return mWindow;
 }
 
 od::graphics::hal::Context* GLDevice::createContext()
