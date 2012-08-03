@@ -17,16 +17,28 @@ set(OD_PLATFORM_SRC
     od/platform/GLWindow.hpp
     )
 
-# Qt4 support for Platform
-if(QT4_FOUND)
-    set(OD_PLATFORM_SRC
-        ${OD_PLATFORM_SRC}
-        od/platform/GLQtWindow.cpp
-        od/platform/GLQtWindow.hpp
-        )
-endif(QT4_FOUND)
+set(OD_PLATFORM_LIBRARIES "" )
+
+# Link against OpenGL libraries if present
+if(OPENGL_FOUND)
+    # Link against Qt4
+    if(QT4_FOUND)
+        set(OD_PLATFORM_SRC
+            ${OD_PLATFORM_SRC}
+            od/platform/GLQtWindow.cpp
+            od/platform/GLQtWindow.hpp
+            )
+
+        set(OD_PLATFORM_LIBRARIES
+            ${OD_PLATFORM_LIBRARIES}
+            ${QT_LIBRARIES}
+            )
+    endif(QT4_FOUND)
+
+endif(OPENGL_FOUND)
 
 add_library(od_platform SHARED ${OD_PLATFORM_SRC})
+target_link_libraries(od_platform ${OD_PLATFORM_LIBRARIES})
 
 # Module: Graphics
 # Base source files for graphics module
@@ -61,6 +73,7 @@ set(OD_GRAPHICS_SRC
     od/graphics/hal/ShaderProgram.cpp
     od/graphics/hal/ShaderProgram.hpp
     )
+set(OD_GRAPHICS_LIBRARIES "" )
 
 # OpenGL support for graphics module.
 # Included only if OpenGL present.
@@ -91,24 +104,10 @@ if(OPENGL_FOUND)
         od/graphics/hal/gl/GLVertexShader.hpp
         )
 
-endif(OPENGL_FOUND)
-
-SET(OD_GRAPHICS_LIBRARIES "" )
-
-# Link against OpenGL libraries if present
-if(OPENGL_FOUND)
-    SET(OD_GRAPHICS_LIBRARIES
-        ${OD_GRAPHICS_LIBRARIES}
-        ${OPENGL_LIBRARIES}
-    )
-
-    # Link against Qt4
-    if(QT4_FOUND)
-        SET(OD_GRAPHICS_LIBRARIES
+        set(OD_GRAPHICS_LIBRARIES
             ${OD_GRAPHICS_LIBRARIES}
-            ${QT_LIBRARIES}
-            )
-    endif(QT4_FOUND)
+            ${OPENGL_LIBRARIES}
+        )
 
 endif(OPENGL_FOUND)
 
