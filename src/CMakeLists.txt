@@ -1,8 +1,13 @@
-
+# Module: Core
+# Source files for core module
 set(OD_CORE_SRC
     od/core/types.hpp
     )
 
+#add_library(od_core SHARED ${OD_CORE_SRC})
+
+# Module: Graphics
+# Base source files for graphics module
 set(OD_GRAPHICS_SRC
     od/graphics/hal/Device.cpp
     od/graphics/hal/Device.hpp
@@ -37,6 +42,8 @@ set(OD_GRAPHICS_SRC
     od/graphics/hal/ShaderProgram.hpp
     )
 
+# OpenGL support for graphics module.
+# Included only if OpenGL present.
 if(OPENGL_FOUND)
     set(OD_GRAPHICS_SRC
         ${OD_GRAPHICS_SRC}
@@ -66,6 +73,7 @@ if(OPENGL_FOUND)
         od/graphics/hal/gl/GLVertexShader.hpp
         )
 
+    # Qt4 widget support for HAL GL
     if(QT4_FOUND)
         SET(OD_GRAPHICS_SRC
             ${OD_GRAPHICS_SRC}
@@ -76,17 +84,16 @@ if(OPENGL_FOUND)
 
 endif(OPENGL_FOUND)
 
-#add_library(od_core SHARED ${OD_CORE_SRC})
-add_library(od_graphics SHARED ${OD_GRAPHICS_SRC})
-
 SET(OD_GRAPHICS_LIBRARIES "" )
 
+# Link against OpenGL libraries if present
 if(OPENGL_FOUND)
     SET(OD_GRAPHICS_LIBRARIES
         ${OD_GRAPHICS_LIBRARIES}
         ${OPENGL_LIBRARIES}
     )
 
+    # Link against Qt4
     if(QT4_FOUND)
         SET(OD_GRAPHICS_LIBRARIES
             ${OD_GRAPHICS_LIBRARIES}
@@ -96,6 +103,7 @@ if(OPENGL_FOUND)
 
 endif(OPENGL_FOUND)
 
+# On OS X, link against Cocoa and IOKit frameworks
 if(APPLE)
     SET(OD_GRAPHICS_LIBRARIES
         ${OD_GRAPHICS_LIBRARIES}
@@ -104,6 +112,7 @@ if(APPLE)
     )
 endif()
 
+# Link against GLFW if found
 if(GLFW_FOUND)
     SET(OD_GRAPHICS_LIBRARIES
         ${OD_GRAPHICS_LIBRARIES}
@@ -111,11 +120,14 @@ if(GLFW_FOUND)
     )
 endif()
 
+# Link against GLEW if found
 if(GLEW_FOUND)
     SET(OD_GRAPHICS_LIBRARIES
         ${OD_GRAPHICS_LIBRARIES}
         ${GLEW_LIBRARIES})
 endif()
 
+# OD Graphics library
+add_library(od_graphics SHARED ${OD_GRAPHICS_SRC})
 target_link_libraries(od_graphics ${OD_GRAPHICS_LIBRARIES})
 
