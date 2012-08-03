@@ -5,5 +5,5 @@ set(EXAMPLE_HAL_WINDOW_SRC
     )
 
 add_executable(hal_window ${EXAMPLE_HAL_WINDOW_SRC})
-target_link_libraries(hal_window od_graphics)
+target_link_libraries(hal_window od_graphics od_platform)
 
