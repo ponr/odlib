@@ -1,15 +1,13 @@
 /// Implements Qt Widget for odlib OpenGL
 
-#ifndef OD_GRAPHICS_HAL_GL_GLQTWINDOW_HPP
-#define OD_GRAPHICS_HAL_GL_GLQTWINDOW_HPP
+#ifndef OD_PLATFORM_GLQTWINDOW_HPP
+#define OD_PLATFORM_GLQTWINDOW_HPP
 
 #include "GLWindow.hpp"
 #include <QtOpenGL/QGLWidget>
 
 namespace od {
-namespace graphics {
-namespace hal {
-namespace gl {
+namespace platform {
 
 /// Implements Qt Widget for odlib OpenGL
 class GLQtWindow : public GLWindow
@@ -32,7 +30,5 @@ private:
 
 }
 }
-}
-}
 
-#endif /* OD_GRAPHICS_HAL_GL_GLQTWINDOW_HPP */
+#endif /* OD_PLATFORM_GLQTWINDOW_HPP */

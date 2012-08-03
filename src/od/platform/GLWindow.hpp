@@ -1,14 +1,12 @@
-#ifndef OD_GRAPHICS_HAL_GL_GLWINDOW_HPP
-#define OD_GRAPHICS_HAL_GL_GLWINDOW_HPP
+#ifndef OD_PLATFORM_GLWINDOW_HPP
+#define OD_PLATFORM_GLWINDOW_HPP
 
-#include "../Window.hpp"
+#include "Window.hpp"
 
 namespace od {
-namespace graphics {
-namespace hal {
-namespace gl {
+namespace platform {
 
-class GLWindow : public od::graphics::hal::Window
+class GLWindow : public Window
 {
 public:
     /// Destructor
@@ -25,7 +23,5 @@ private:
 
 }
 }
-}
-}
 
-#endif /* OD_GRAPHICS_HAL_GL_GLWINDOW_HPP */
+#endif /* OD_PLATFORM_GLWINDOW_HPP */

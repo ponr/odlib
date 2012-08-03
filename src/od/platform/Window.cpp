@@ -1,8 +1,7 @@
 #include "Window.hpp"
 
 namespace od {
-namespace graphics {
-namespace hal {
+namespace platform {
 
 Window::Window()
 {
@@ -12,6 +11,5 @@ Window::~Window()
 {
 }
 
-}
 }
 }

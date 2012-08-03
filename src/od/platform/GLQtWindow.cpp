@@ -1,9 +1,7 @@
 #include "GLQtWindow.hpp"
 
 namespace od {
-namespace graphics {
-namespace hal {
-namespace gl {
+namespace platform {
 
 GLQtWindow::GLQtWindow(QWidget* parent) :
     GLWindow(),
@@ -29,6 +27,3 @@ void GLQtWindow::onResize(ODuint16 width, ODuint16 height)
 
 }
 }
-}
-}
-

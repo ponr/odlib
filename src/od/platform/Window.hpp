@@ -1,13 +1,12 @@
 /// Window base class
 
-#ifndef OD_GRAPHICS_HAL_WINDOW_HPP
-#define OD_GRAPHICS_HAL_WINDOW_HPP
+#ifndef OD_PLATFORM_WINDOW_HPP
+#define OD_PLATFORM_WINDOW_HPP
 
-#include "../../core/types.hpp"
+#include "../core/types.hpp"
 
 namespace od {
-namespace graphics {
-namespace hal {
+namespace platform {
 
 /// Window base class.
 /// Window-class handles creation of Window or Widget that contains
@@ -32,6 +31,5 @@ private:
 
 }
 }
-}
 
-#endif /* OD_GRAPHICS_HAL_WINDOW_HPP */
+#endif /* OD_PLATFORM_WINDOW_HPP */
