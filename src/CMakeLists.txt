@@ -6,6 +6,15 @@ set(OD_CORE_SRC
 
 #add_library(od_core SHARED ${OD_CORE_SRC})
 
+# Module: Platform
+# Source files for platform module
+set(OD_PLATFORM_SRC
+    od/platform/Application.cpp
+    od/platform/Application.hpp
+    )
+
+add_library(od_platform SHARED ${OD_PLATFORM_SRC})
+
 # Module: Graphics
 # Base source files for graphics module
 set(OD_GRAPHICS_SRC
