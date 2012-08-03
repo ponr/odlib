@@ -6,6 +6,9 @@ namespace platform {
 
 class Window;
 
+/// Interface Class to handle interaction between Application Platform
+/// and ODlib.
+/// Handles window creation and event system.
 class Application
 {
 public:
@@ -15,15 +18,6 @@ public:
     /// Create window
     /// @return Pointer to window
     virtual Window* createWindow() = 0;
-
-    /// Set Device to use given Window
-    /// @param window Pointer to window
-    /// @return Bool to tell if set succeeded or not
-    virtual bool setWindow(Window* window) = 0;
-
-    /// Get Window of the Device
-    /// @return Pointer to window
-    virtual Window* getWindow() = 0;
 
 protected:
     Application(int argc, char ** argv);
