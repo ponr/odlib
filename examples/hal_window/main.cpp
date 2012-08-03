@@ -1,14 +1,10 @@
 #include <cstdlib>
 #include <od/graphics/hal/DeviceFactory.hpp>
 #include <od/graphics/hal/Device.hpp>
-#include <od/graphics/hal/Window.hpp>
-#include <od/graphics/hal/gl/GLQtWindow.hpp>
 #include <QApplication>
 
 using od::graphics::hal::DeviceFactory;
 using od::graphics::hal::Device;
-using od::graphics::hal::Window;
-using od::graphics::hal::gl::GLQtWindow;
 
 int main(int argc, char** argv)
 {
@@ -26,9 +22,10 @@ int main(int argc, char** argv)
     }
 
     // Create new GL Qt Window
-    GLQtWindow* window = new GLQtWindow();
+    //GLQtWindow* window = new GLQtWindow();
 
     // If window can't be set, exit
+    /*
     if(!device->setWindow(window))
     {
         delete device;
@@ -36,11 +33,12 @@ int main(int argc, char** argv)
 
         return EXIT_FAILURE;
     }
+    */
 
     app.exec();
 
     delete device;
-    delete window;
+    //delete window;
 
     return EXIT_SUCCESS;
 }
