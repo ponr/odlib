@@ -11,7 +11,20 @@ set(OD_CORE_SRC
 set(OD_PLATFORM_SRC
     od/platform/Application.cpp
     od/platform/Application.hpp
+    od/platform/Window.cpp
+    od/platform/Window.hpp
+    od/platform/GLWindow.cpp
+    od/platform/GLWindow.hpp
     )
+
+# Qt4 support for Platform
+if(QT4_FOUND)
+    set(OD_PLATFORM_SRC
+        ${OD_PLATFORM_SRC}
+        od/platform/GLQtWindow.cpp
+        od/platform/GLQtWindow.hpp
+        )
+endif(QT4_FOUND)
 
 add_library(od_platform SHARED ${OD_PLATFORM_SRC})
 
@@ -27,8 +40,6 @@ set(OD_GRAPHICS_SRC
     od/graphics/hal/DeviceResource.hpp
     od/graphics/hal/DeviceResourceManager.cpp
     od/graphics/hal/DeviceResourceManager.hpp
-    od/graphics/hal/Window.cpp
-    od/graphics/hal/Window.hpp
     od/graphics/hal/Context.cpp
     od/graphics/hal/Context.hpp
     od/graphics/hal/Texture.cpp
@@ -60,8 +71,6 @@ if(OPENGL_FOUND)
         od/graphics/hal/gl/GLVersion.hpp
         od/graphics/hal/gl/GLDevice.cpp
         od/graphics/hal/gl/GLDevice.hpp
-        od/graphics/hal/gl/GLWindow.cpp
-        od/graphics/hal/gl/GLWindow.hpp
         od/graphics/hal/gl/GLContext.cpp
         od/graphics/hal/gl/GLContext.hpp
         od/graphics/hal/gl/GLTexture.cpp
@@ -81,15 +90,6 @@ if(OPENGL_FOUND)
         od/graphics/hal/gl/GLVertexShader.cpp
         od/graphics/hal/gl/GLVertexShader.hpp
         )
-
-    # Qt4 widget support for HAL GL
-    if(QT4_FOUND)
-        SET(OD_GRAPHICS_SRC
-            ${OD_GRAPHICS_SRC}
-            od/graphics/hal/gl/GLQtWindow.cpp
-            od/graphics/hal/gl/GLQtWindow.hpp
-            )
-    endif(QT4_FOUND)
 
 endif(OPENGL_FOUND)
 
