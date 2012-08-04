@@ -1,15 +1,20 @@
 #include <cstdlib>
+#include <od/platform/Application.hpp>
+#include <od/platform/ApplicationFactory.hpp>
 #include <od/graphics/hal/DeviceFactory.hpp>
 #include <od/graphics/hal/Device.hpp>
 #include <QApplication>
 
+using od::platform::Application;
+using od::platform::ApplicationFactory;
 using od::graphics::hal::DeviceFactory;
 using od::graphics::hal::Device;
 
 int main(int argc, char** argv)
 {
-    // Initializing Qt Application
-    QApplication app(argc, argv);
+    // Initializing Application Platform
+    Application* app =
+            ApplicationFactory::createApplication(argc, argv);
 
     // Create new ODlib HAL Device
     Device* device = DeviceFactory::createDevice(
@@ -20,22 +25,6 @@ int main(int argc, char** argv)
     {
         return EXIT_FAILURE;
     }
-
-    // Create new GL Qt Window
-    //GLQtWindow* window = new GLQtWindow();
-
-    // If window can't be set, exit
-    /*
-    if(!device->setWindow(window))
-    {
-        delete device;
-        delete window;
-
-        return EXIT_FAILURE;
-    }
-    */
-
-    app.exec();
 
     delete device;
     //delete window;

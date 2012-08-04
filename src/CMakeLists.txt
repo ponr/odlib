@@ -9,6 +9,8 @@ set(OD_CORE_SRC
 # Module: Platform
 # Source files for platform module
 set(OD_PLATFORM_SRC
+    od/platform/ApplicationFactory.cpp
+    od/platform/ApplicationFactory.hpp
     od/platform/Application.cpp
     od/platform/Application.hpp
     od/platform/Window.cpp
