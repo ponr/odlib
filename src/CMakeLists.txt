@@ -27,6 +27,8 @@ if(OPENGL_FOUND)
     if(QT4_FOUND)
         set(OD_PLATFORM_SRC
             ${OD_PLATFORM_SRC}
+            od/platform/QtApplication.cpp
+            od/platform/QtApplication.hpp
             od/platform/GLQtWindow.cpp
             od/platform/GLQtWindow.hpp
             )
