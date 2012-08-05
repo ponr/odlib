@@ -16,6 +16,7 @@ GLFragmentShader::~GLFragmentShader()
 
 bool GLFragmentShader::compile()
 {
+    return false;
 }
 
 void GLFragmentShader::unload()

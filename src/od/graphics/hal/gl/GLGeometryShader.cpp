@@ -16,6 +16,7 @@ GLGeometryShader::~GLGeometryShader()
 
 bool GLGeometryShader::compile()
 {
+    return false;
 }
 
 void GLGeometryShader::unload()

@@ -16,6 +16,7 @@ GLTessellationEvaluationShader::~GLTessellationEvaluationShader()
 
 bool GLTessellationEvaluationShader::compile()
 {
+    return false;
 }
 
 void GLTessellationEvaluationShader::unload()

@@ -16,6 +16,7 @@ GLTessellationControlShader::~GLTessellationControlShader()
 
 bool GLTessellationControlShader::compile()
 {
+    return false;
 }
 
 void GLTessellationControlShader::unload()

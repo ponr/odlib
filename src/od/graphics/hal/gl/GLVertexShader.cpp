@@ -16,6 +16,7 @@ GLVertexShader::~GLVertexShader()
 
 bool GLVertexShader::compile()
 {
+    return false;
 }
 
 void GLVertexShader::unload()
