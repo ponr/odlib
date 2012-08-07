@@ -1,3 +1,6 @@
+
+set(CMAKE_CXX_FLAGS "-Wall")
+
 # Module: Core
 # Source files for core module
 set(OD_CORE_SRC
@@ -19,7 +22,7 @@ set(OD_PLATFORM_SRC
     od/platform/GLWindow.hpp
     )
 
-set(OD_PLATFORM_LIBRARIES "" )
+set(OD_PLATFORM_LIBRARIES "od_graphics" )
 
 # Link against OpenGL libraries if present
 if(OPENGL_FOUND)
