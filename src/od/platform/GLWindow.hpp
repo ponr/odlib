@@ -6,6 +6,7 @@
 namespace od {
 namespace platform {
 
+/// Interface class for OpenGL Windows
 class GLWindow : public Window
 {
 public:

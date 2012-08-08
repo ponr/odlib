@@ -5,10 +5,13 @@
 
 #include "GLWindow.hpp"
 #include "../graphics/hal/gl/GLDevice.hpp"
-#include <QtOpenGL/QGLWidget>
+
+#include <QWidget>
 
 namespace od {
 namespace platform {
+
+class ODQGLWidget;
 
 /// Implements Qt Widget for odlib OpenGL
 class GLQtWindow : public GLWindow
@@ -39,7 +42,10 @@ private:
     GLQtWindow(const GLQtWindow&);
     GLQtWindow& operator= (const GLQtWindow&);
 
-    QGLWidget* mWidget;
+    // Qt widget for GL
+    ODQGLWidget* mWidget;
+
+    // HAL GLDevice pointer
     od::graphics::hal::gl::GLDevice* mDevice;
 };
 

@@ -34,6 +34,8 @@ if(OPENGL_FOUND)
             od/platform/QtApplication.hpp
             od/platform/GLQtWindow.cpp
             od/platform/GLQtWindow.hpp
+            od/platform/ODQGLWidget.cpp
+            od/platform/ODQGLWidget.hpp
             )
 
         set(OD_PLATFORM_LIBRARIES

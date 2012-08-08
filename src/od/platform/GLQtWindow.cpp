@@ -1,5 +1,9 @@
 #include "GLQtWindow.hpp"
+#include "ODQGLWidget.hpp"
 #include "../graphics/hal/DeviceFactory.hpp"
+
+#include <QtOpenGL/QGLFormat>
+#include <QSize>
 
 namespace od {
 namespace platform {
@@ -9,8 +13,16 @@ GLQtWindow::GLQtWindow(QWidget* parent) :
     mWidget(0),
     mDevice(0)
 {
-    // Allocate QGLWidget
-    mWidget = new QGLWidget(parent);
+    // Setting vsync on
+    QGLFormat format;
+    format.setSwapInterval(1);
+
+    // TODO: Examine more, if this variable is initialized before
+    //       QGLFormat above, following widget creation causes segfault.
+    QSize size(128,100);
+
+    // Creating new ODQGLWidget
+    mWidget = new ODQGLWidget(size, format, "ODQGLWidget", parent);
     mWidget->show();
 }
 
