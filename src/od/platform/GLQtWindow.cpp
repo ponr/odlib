@@ -16,6 +16,13 @@ GLQtWindow::GLQtWindow(QWidget* parent) :
 
 GLQtWindow::~GLQtWindow()
 {
+    // Free device if allocated
+    if(mDevice != 0)
+    {
+        delete mDevice;
+        mDevice = 0;
+    }
+
     // Free allocated widget
     delete mWidget;
     mWidget = 0;

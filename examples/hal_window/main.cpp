@@ -28,7 +28,6 @@ int main(int argc, char** argv)
         return EXIT_FAILURE;
     }
 
-    delete device;
     delete window;
     delete app;
 
