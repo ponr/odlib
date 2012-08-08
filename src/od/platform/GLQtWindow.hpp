@@ -4,6 +4,7 @@
 #define OD_PLATFORM_GLQTWINDOW_HPP
 
 #include "GLWindow.hpp"
+#include "../graphics/hal/gl/GLDevice.hpp"
 #include <QtOpenGL/QGLWidget>
 
 namespace od {
@@ -18,6 +19,19 @@ public:
 
     QWidget* getWidget();
 
+    /// Create Device for Window
+    /// @return Pointer to Device
+    od::graphics::hal::Device* createDevice();
+
+    /// Set Device for Window
+    /// @param device Pointer to Device
+    void setDevice(od::graphics::hal::Device* device);
+
+    /// Get Device of Window
+    /// @return Pointer to Device
+    od::graphics::hal::Device* getDevice();
+
+
 protected:
     void onResize(ODuint16 width, ODuint16 height);
 
@@ -26,6 +40,7 @@ private:
     GLQtWindow& operator= (const GLQtWindow&);
 
     QGLWidget* mWidget;
+    od::graphics::hal::gl::GLDevice* mDevice;
 };
 
 }

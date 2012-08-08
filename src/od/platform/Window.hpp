@@ -6,6 +6,15 @@
 #include "../core/types.hpp"
 
 namespace od {
+
+namespace graphics {
+namespace hal {
+
+class Device;
+
+}
+}
+
 namespace platform {
 
 /// Window base class.
@@ -16,6 +25,18 @@ class Window
 public:
     /// Destructor
     virtual ~Window();
+
+    /// Create Device for Window
+    /// @return Pointer to Device
+    virtual od::graphics::hal::Device* createDevice() = 0;
+
+    /// Set Device for Window
+    /// @param device Pointer to Device
+    virtual void setDevice(od::graphics::hal::Device* device) = 0;
+
+    /// Get Device of Window
+    /// @return Pointer to Device
+    virtual od::graphics::hal::Device* getDevice() = 0;
 
 protected:
     Window();
