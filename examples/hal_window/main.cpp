@@ -2,14 +2,12 @@
 #include <od/platform/Application.hpp>
 #include <od/platform/ApplicationFactory.hpp>
 #include <od/platform/Window.hpp>
-#include <od/graphics/hal/DeviceFactory.hpp>
 #include <od/graphics/hal/Device.hpp>
 #include <QApplication>
 
 using od::platform::Application;
 using od::platform::ApplicationFactory;
 using od::platform::Window;
-using od::graphics::hal::DeviceFactory;
 using od::graphics::hal::Device;
 
 int main(int argc, char** argv)
@@ -18,11 +16,11 @@ int main(int argc, char** argv)
     Application* app =
             ApplicationFactory::createApplication(argc, argv);
 
+    // Create window using application object
     Window* window = app->createWindow();
 
-    // Create new ODlib HAL Device
-    Device* device = DeviceFactory::createDevice(
-                od::graphics::hal::DEVICETYPE_OPENGLES2);
+    // Create new HAL Device
+    Device* device = window->createDevice();
 
     // If HAL Device could not be created, exit
     if(!device)
@@ -31,7 +29,8 @@ int main(int argc, char** argv)
     }
 
     delete device;
-    //delete window;
+    delete window;
+    delete app;
 
     return EXIT_SUCCESS;
 }
