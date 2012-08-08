@@ -3,12 +3,14 @@
 #include <od/platform/ApplicationFactory.hpp>
 #include <od/platform/Window.hpp>
 #include <od/graphics/hal/Device.hpp>
+#include <od/graphics/hal/Context.hpp>
 #include <QApplication>
 
 using od::platform::Application;
 using od::platform::ApplicationFactory;
 using od::platform::Window;
 using od::graphics::hal::Device;
+using od::graphics::hal::Context;
 
 int main(int argc, char** argv)
 {
@@ -19,7 +21,7 @@ int main(int argc, char** argv)
     // Create window using application object
     Window* window = app->createWindow();
 
-    // Create new HAL Device
+    // Create new HAL rendering device
     Device* device = window->createDevice();
 
     // If HAL Device could not be created, exit
@@ -28,6 +30,10 @@ int main(int argc, char** argv)
         return EXIT_FAILURE;
     }
 
+    // Create rendering context using device
+    Context* context = device->createContext();
+
+    delete context;
     delete window;
     delete app;
 
