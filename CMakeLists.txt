@@ -1,7 +1,10 @@
 cmake_minimum_required (VERSION 2.8)
 project (odlib)
 
-set(BOOSTCOMPONENTS system filesystem thread)
+# Use C++11
+add_definitions("-std=c++0x")
+
+set(BOOSTCOMPONENTS system filesystem thread signals)
 
 set(Boost_USE_MULTITHREADED ON)
 find_package(Boost 1.45.0 REQUIRED COMPONENTS ${BOOSTCOMPONENTS})
@@ -24,14 +27,14 @@ if(OPENGL_FOUND)
 endif(OPENGL_FOUND)
 
 if(GLFW_FOUND)
-    message(status "Found GLFW")
+    message("-- Found GLFW")
     add_definitions(-DGLFW)
     include_directories(${GLFW_INCLUDE_DIRS})
     link_directories(${GLFW_LIBRARY_DIRS})
 endif()
 
 if(GLEW_FOUND)
-    message(status "Found GLEW")
+    message("-- Found GLEW")
     add_definitions(-DGLEW)
     include_directories(${GLEW_INCLUDE_DIRS})
     link_directories(${GLEW_LIBRARY_DIRS})
