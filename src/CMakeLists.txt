@@ -2,6 +2,8 @@
 set(CMAKE_CXX_FLAGS "-Wall")
 
 # Module: Core
+#
+
 # Source files for core module
 set(OD_CORE_SRC
     od/core/types.hpp
@@ -9,7 +11,23 @@ set(OD_CORE_SRC
 
 #add_library(od_core SHARED ${OD_CORE_SRC})
 
+# Module: Event
+#
+
+# Source files for event module
+set(OD_EVENT_SRC
+    od/event/EventManager.cpp
+    od/event/EventManager.hpp
+    )
+
+set(OD_EVENT_LIBRARIES "" )
+
+add_library(od_event SHARED ${OD_EVENT_SRC})
+target_link_libraries(od_event ${OD_EVENT_LIBRARIES})
+
 # Module: Platform
+#
+
 # Source files for platform module
 set(OD_PLATFORM_SRC
     od/platform/ApplicationFactory.cpp
@@ -50,6 +68,8 @@ add_library(od_platform SHARED ${OD_PLATFORM_SRC})
 target_link_libraries(od_platform ${OD_PLATFORM_LIBRARIES})
 
 # Module: Graphics
+#
+
 # Base source files for graphics module
 set(OD_GRAPHICS_SRC
     od/graphics/hal/Device.cpp
