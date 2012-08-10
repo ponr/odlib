@@ -64,6 +64,16 @@ if(OPENGL_FOUND)
 
 endif(OPENGL_FOUND)
 
+# TODO: Possibly add GLFW support
+# (Link against GLFW if found)
+if(GLFW_FOUND)
+    #SET(OD_GRAPHICS_LIBRARIES
+    #    ${OD_GRAPHICS_LIBRARIES}
+    #    ${GLFW_LIBRARIES}
+    #)
+endif()
+
+
 add_library(od_platform SHARED ${OD_PLATFORM_SRC})
 target_link_libraries(od_platform ${OD_PLATFORM_LIBRARIES})
 
@@ -146,14 +156,6 @@ if(APPLE)
         ${OD_GRAPHICS_LIBRARIES}
         ${COCOA_LIBRARY}
         ${IOKIT_LIBRARY}
-    )
-endif()
-
-# Link against GLFW if found
-if(GLFW_FOUND)
-    SET(OD_GRAPHICS_LIBRARIES
-        ${OD_GRAPHICS_LIBRARIES}
-        ${GLFW_LIBRARIES}
     )
 endif()
 

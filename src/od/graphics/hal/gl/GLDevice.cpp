@@ -21,7 +21,6 @@ GLDevice::GLDevice() :
 
 GLDevice::~GLDevice()
 {
-    glfwTerminate();
 }
 
 od::graphics::hal::Context* GLDevice::createContext()
@@ -83,23 +82,7 @@ DeviceType GLDevice::getType() const
 
 bool GLDevice::init()
 {
-#ifdef GLFW
-    if(!glfwInit())
-    {
-        return false;
-    }
-
-    glfwOpenWindowHint(GLFW_WINDOW_NO_RESIZE, GL_TRUE);
-    if(!glfwOpenWindow(300, 300, 0, 0, 0, 0, 0, 0, GLFW_WINDOW))
-    {
-        glfwTerminate();
-        return false;
-    }
-
-    return true;
-#else
     return false;
-#endif /* GLFW */
 }
 
 }

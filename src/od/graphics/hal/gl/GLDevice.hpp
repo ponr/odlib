@@ -9,10 +9,6 @@
 
 #include "OpenGL.hpp"
 
-#ifdef GLFW
-#include <GL/glfw.h>
-#endif /* GLFW */
-
 namespace od {
 namespace graphics {
 namespace hal {
