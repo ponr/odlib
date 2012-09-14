@@ -4,6 +4,12 @@ project (odlib)
 # Use C++11
 add_definitions("-std=c++0x")
 
+if(APPLE)
+    add_definitions("-stdlib=libc++")
+    link_libraries("-stdlib=libc++")
+endif(APPLE)
+
+# Find Boost
 set(BOOSTCOMPONENTS system filesystem thread signals)
 
 set(Boost_USE_MULTITHREADED ON)
