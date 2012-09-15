@@ -23,51 +23,64 @@ GLDevice::~GLDevice()
 {
 }
 
-od::graphics::hal::Context* GLDevice::createContext()
+std::shared_ptr <od::graphics::hal::Context>
+GLDevice::createContext()
 {
-    return new GLContext();
+    return std::shared_ptr <od::graphics::hal::Context> (new GLContext());
 }
 
-od::graphics::hal::Texture* GLDevice::createTexture()
+std::shared_ptr <od::graphics::hal::Texture> GLDevice::createTexture()
 {
-    return new GLTexture();
+    return std::shared_ptr <od::graphics::hal::Texture> (new GLTexture());
 }
 
-od::graphics::hal::VertexBuffer* GLDevice::createVertexBuffer()
+std::shared_ptr <od::graphics::hal::VertexBuffer>
+GLDevice::createVertexBuffer()
 {
-    return new GLVertexBuffer();
+    return std::shared_ptr <od::graphics::hal::VertexBuffer>
+            (new GLVertexBuffer());
 }
 
-od::graphics::hal::VertexShader* GLDevice::createVertexShader()
+std::shared_ptr <od::graphics::hal::VertexShader>
+GLDevice::createVertexShader()
 {
-    return new GLVertexShader();
+    return std::shared_ptr <od::graphics::hal::VertexShader>
+            (new GLVertexShader());
 }
 
-od::graphics::hal::TessellationControlShader*
-    GLDevice::createTessellationControlShader()
+std::shared_ptr <od::graphics::hal::TessellationControlShader>
+GLDevice::createTessellationControlShader()
 {
-    return new GLTessellationControlShader();
+    return std::shared_ptr <od::graphics::hal::TessellationControlShader>
+            (new GLTessellationControlShader());
 }
 
-od::graphics::hal::TessellationEvaluationShader*
-    GLDevice::createTessellationEvaluationShader()
+std::shared_ptr <od::graphics::hal::TessellationEvaluationShader>
+GLDevice::createTessellationEvaluationShader()
 {
-    return new GLTessellationEvaluationShader();
+    return std::shared_ptr <od::graphics::hal::TessellationEvaluationShader>
+            (new GLTessellationEvaluationShader());
 }
 
-od::graphics::hal::GeometryShader* GLDevice::createGeometryShader()
+std::shared_ptr <od::graphics::hal::GeometryShader>
+GLDevice::createGeometryShader()
 {
-    return new GLGeometryShader();
+    return std::shared_ptr <od::graphics::hal::GeometryShader>
+            (new GLGeometryShader());
 }
 
-od::graphics::hal::FragmentShader* GLDevice::createFragmentShader()
+std::shared_ptr <od::graphics::hal::FragmentShader>
+GLDevice::createFragmentShader()
 {
-    return new GLFragmentShader();
+    return std::shared_ptr <od::graphics::hal::FragmentShader>
+            (new GLFragmentShader());
 }
 
-od::graphics::hal::ShaderProgram* GLDevice::createShaderProgram()
+std::shared_ptr <od::graphics::hal::ShaderProgram>
+GLDevice::createShaderProgram()
 {
-    return new GLShaderProgram();
+    return std::shared_ptr <od::graphics::hal::ShaderProgram>
+            (new GLShaderProgram());
 }
 
 void GLDevice::resize(ODuint16 width, ODuint16 height)

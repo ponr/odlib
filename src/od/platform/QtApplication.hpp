@@ -22,7 +22,7 @@ public:
 
     /// Create window
     /// @return Pointer to window
-    virtual Window* createWindow();
+    virtual std::shared_ptr <Window> createWindow();
 
 protected:
 

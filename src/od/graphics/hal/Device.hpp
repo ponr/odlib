@@ -4,6 +4,8 @@
 
 #include "DeviceType.hpp"
 
+#include <memory>
+
 namespace od {
 namespace graphics {
 namespace hal {
@@ -30,40 +32,41 @@ public:
 
     /// Create context.
     /// @return Pointer to context.
-    virtual Context* createContext() = 0;
+    virtual std::shared_ptr <Context> createContext() = 0;
 
     /// Create texture.
     /// @return Pointer to texture.
-    virtual Texture* createTexture() = 0;
+    virtual std::shared_ptr <Texture> createTexture() = 0;
 
     /// Create vertex buffer.
     /// @return Pointer to vertex buffer.
-    virtual VertexBuffer* createVertexBuffer() = 0;
+    virtual std::shared_ptr <VertexBuffer> createVertexBuffer() = 0;
 
     /// Create vertex shader.
     /// @return Pointer to vertex shader.
-    virtual VertexShader* createVertexShader() = 0;
+    virtual std::shared_ptr <VertexShader> createVertexShader() = 0;
 
     /// Create tessellation control shader.
     /// @return Pointer to tessellation control shader.
-    virtual TessellationControlShader* createTessellationControlShader() = 0;
+    virtual std::shared_ptr <TessellationControlShader>
+    createTessellationControlShader() = 0;
 
     /// Create tessellation evaluation shader.
     /// @return Pointer to tessellation evaluation shader.
-    virtual TessellationEvaluationShader*
-        createTessellationEvaluationShader() = 0;
+    virtual std::shared_ptr <TessellationEvaluationShader>
+    createTessellationEvaluationShader() = 0;
 
     /// Create geometry shader.
     /// @return Pointer to geometry shader.
-    virtual GeometryShader* createGeometryShader() = 0;
+    virtual std::shared_ptr <GeometryShader> createGeometryShader() = 0;
 
     /// Create fragment shader.
     /// @return Pointer to fragment shader.
-    virtual FragmentShader* createFragmentShader() = 0;
+    virtual std::shared_ptr <FragmentShader> createFragmentShader() = 0;
 
     /// Create shader program.
     /// @return Pointer to shader program.
-    virtual ShaderProgram* createShaderProgram() = 0;
+    virtual std::shared_ptr <ShaderProgram> createShaderProgram() = 0;
 
     /// Get type of the device
     /// @return Type of the device

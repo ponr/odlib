@@ -1,6 +1,8 @@
 #ifndef OD_PLATFORM_APPLICATION_HPP
 #define OD_PLATFORM_APPLICATION_HPP
 
+#include <memory>
+
 namespace od {
 namespace platform {
 
@@ -17,7 +19,7 @@ public:
 
     /// Create window
     /// @return Pointer to window
-    virtual Window* createWindow() = 0;
+    virtual std::shared_ptr <Window> createWindow() = 0;
 
 protected:
     Application(int argc, char ** argv);

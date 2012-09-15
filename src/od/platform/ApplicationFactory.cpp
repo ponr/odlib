@@ -4,10 +4,10 @@
 namespace od {
 namespace platform {
 
-Application* ApplicationFactory::createApplication(
+std::shared_ptr<Application> ApplicationFactory::createApplication(
         int argc, char** argv, ApplicationType type)
 {
-    return new QtApplication(argc, argv);
+    return std::shared_ptr <Application> (new QtApplication(argc, argv));
 }
 
 }

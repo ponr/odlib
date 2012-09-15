@@ -14,7 +14,8 @@ namespace od {
 namespace graphics {
 namespace hal {
 
-Device* DeviceFactory::createDevice(const DeviceType& desiredtype)
+std::shared_ptr <Device> DeviceFactory::createDevice(
+        const DeviceType& desiredtype)
 {
     DeviceType type = desiredtype;
 
@@ -55,7 +56,7 @@ Device* DeviceFactory::createDevice(const DeviceType& desiredtype)
     {
     }
 
-    return new gl::GLDevice();
+    return std::shared_ptr <Device> (new gl::GLDevice());
 }
 
 }

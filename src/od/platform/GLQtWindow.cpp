@@ -28,13 +28,6 @@ GLQtWindow::GLQtWindow(QWidget* parent) :
 
 GLQtWindow::~GLQtWindow()
 {
-    // Free device if allocated
-    if(mDevice != 0)
-    {
-        delete mDevice;
-        mDevice = 0;
-    }
-
     // Free allocated widget
     delete mWidget;
     mWidget = 0;
@@ -46,23 +39,20 @@ QWidget* GLQtWindow::getWidget()
     return mWidget;
 }
 
-od::graphics::hal::Device* GLQtWindow::createDevice()
+std::shared_ptr <od::graphics::hal::Device> GLQtWindow::createDevice()
 {
-    //mDevice = new od::graphics::hal::gl::GLDevice();
-
     // Create new OpenGL device
-    mDevice = dynamic_cast <od::graphics::hal::gl::GLDevice*>
-            (od::graphics::hal::DeviceFactory::createDevice(
-                 od::graphics::hal::DEVICETYPE_OPENGL4));
-    return mDevice;
+    mDevice = od::graphics::hal::DeviceFactory::createDevice(
+                 od::graphics::hal::DEVICETYPE_OPENGL4);
+    return std::shared_ptr <od::graphics::hal::Device> (mDevice);
 }
 
-void GLQtWindow::setDevice(od::graphics::hal::Device *device)
+void GLQtWindow::setDevice(std::shared_ptr <od::graphics::hal::Device> device)
 {
-    mDevice = dynamic_cast <od::graphics::hal::gl::GLDevice*> (device);
+    mDevice = device;
 }
 
-od::graphics::hal::Device* GLQtWindow::getDevice()
+std::shared_ptr <od::graphics::hal::Device> GLQtWindow::getDevice()
 {
     return mDevice;
 }

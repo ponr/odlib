@@ -4,7 +4,7 @@
 #define OD_PLATFORM_GLQTWINDOW_HPP
 
 #include "GLWindow.hpp"
-#include "../graphics/hal/gl/GLDevice.hpp"
+#include "../graphics/hal/Device.hpp"
 
 #include <QWidget>
 
@@ -24,15 +24,15 @@ public:
 
     /// Create Device for Window
     /// @return Pointer to Device
-    od::graphics::hal::Device* createDevice();
+    std::shared_ptr <od::graphics::hal::Device> createDevice();
 
     /// Set Device for Window
     /// @param device Pointer to Device
-    void setDevice(od::graphics::hal::Device* device);
+    void setDevice(std::shared_ptr <od::graphics::hal::Device> device);
 
     /// Get Device of Window
     /// @return Pointer to Device
-    od::graphics::hal::Device* getDevice();
+    std::shared_ptr <od::graphics::hal::Device> getDevice();
 
 
 protected:
@@ -46,7 +46,7 @@ private:
     ODQGLWidget* mWidget;
 
     // HAL GLDevice pointer
-    od::graphics::hal::gl::GLDevice* mDevice;
+    std::shared_ptr <od::graphics::hal::Device> mDevice;
 };
 
 }

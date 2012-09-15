@@ -1,6 +1,8 @@
 #ifndef OD_PLATFORM_APPLICATIONFACTORY_HPP
 #define OD_PLATFORM_APPLICATIONFACTORY_HPP
 
+#include <memory>
+
 namespace od {
 namespace platform {
 
@@ -20,7 +22,7 @@ public:
     /// @param argv Parameter/Argument variable array
     /// @param type Try to create this type of ApplicationType
     ///             if poosible
-    static Application* createApplication(
+    static std::shared_ptr <Application> createApplication(
             int argc, char** argv,
             ApplicationType type = APPLICATIONTYPE_DEFAULT);
 

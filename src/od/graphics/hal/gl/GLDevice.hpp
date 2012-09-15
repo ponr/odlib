@@ -29,40 +29,41 @@ public:
 
     /// Create context.
     /// @return Pointer to context.
-    Context* createContext();
+    std::shared_ptr <od::graphics::hal::Context> createContext();
 
     /// Create texture.
     /// @return Pointer to texture.
-    Texture* createTexture();
+    std::shared_ptr <od::graphics::hal::Texture> createTexture();
 
     /// Create vertex buffer.
     /// @return Pointer to vertex buffer.
-    VertexBuffer* createVertexBuffer();
+    std::shared_ptr <od::graphics::hal::VertexBuffer> createVertexBuffer();
 
     /// Create vertex shader.
     /// @return Pointer to vertex shader.
-    VertexShader* createVertexShader();
+    std::shared_ptr <od::graphics::hal::VertexShader> createVertexShader();
 
     /// Create tessellation control shader.
     /// @return Pointer to tessellation control shader.
-    TessellationControlShader* createTessellationControlShader();
+    std::shared_ptr <od::graphics::hal::TessellationControlShader>
+    createTessellationControlShader();
 
     /// Create tessellation evaluation shader.
     /// @return Pointer to tessellation evaluation shader.
-    TessellationEvaluationShader*
-        createTessellationEvaluationShader();
+    std::shared_ptr <od::graphics::hal::TessellationEvaluationShader>
+    createTessellationEvaluationShader();
 
     /// Create geometry shader.
     /// @return Pointer to geometry shader.
-    GeometryShader* createGeometryShader();
+    std::shared_ptr <od::graphics::hal::GeometryShader> createGeometryShader();
 
     /// Create fragment shader.
     /// @return Pointer to fragment shader.
-    FragmentShader* createFragmentShader();
+    std::shared_ptr <od::graphics::hal::FragmentShader> createFragmentShader();
 
     /// Create shader program.
     /// @return Pointer to shader program.
-    ShaderProgram* createShaderProgram();
+    std::shared_ptr <od::graphics::hal::ShaderProgram> createShaderProgram();
 
     /// Window resize callback
     /// @param width Width of window

@@ -5,6 +5,7 @@
 #include <od/graphics/hal/Device.hpp>
 #include <od/graphics/hal/Context.hpp>
 #include <QApplication>
+#include <memory>
 
 using od::platform::Application;
 using od::platform::ApplicationFactory;
@@ -15,14 +16,14 @@ using od::graphics::hal::Context;
 int main(int argc, char** argv)
 {
     // Initializing Application Platform
-    Application* app =
+    std::shared_ptr <Application> app =
             ApplicationFactory::createApplication(argc, argv);
 
     // Create window using application object
-    Window* window = app->createWindow();
+    std::shared_ptr <Window> window = app->createWindow();
 
     // Create new HAL rendering device
-    Device* device = window->createDevice();
+    std::shared_ptr <Device> device = window->createDevice();
 
     // If HAL Device could not be created, exit
     if(!device)
@@ -31,11 +32,7 @@ int main(int argc, char** argv)
     }
 
     // Create rendering context using device
-    Context* context = device->createContext();
-
-    delete context;
-    delete window;
-    delete app;
+    std::shared_ptr <Context> context = device->createContext();
 
     return EXIT_SUCCESS;
 }

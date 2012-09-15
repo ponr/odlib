@@ -21,10 +21,10 @@ QtApplication::~QtApplication()
     mApp = 0;
 }
 
-Window* QtApplication::createWindow()
+std::shared_ptr <Window> QtApplication::createWindow()
 {
     // Return pointer to new GLQtWindow
-    return new GLQtWindow();
+    return std::shared_ptr <Window> (new GLQtWindow());
 }
 
 

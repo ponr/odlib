@@ -4,6 +4,7 @@
 #define OD_PLATFORM_WINDOW_HPP
 
 #include "../core/types.hpp"
+#include <memory>
 
 namespace od {
 
@@ -28,15 +29,16 @@ public:
 
     /// Create Device for Window
     /// @return Pointer to Device
-    virtual od::graphics::hal::Device* createDevice() = 0;
+    virtual std::shared_ptr <od::graphics::hal::Device> createDevice() = 0;
 
     /// Set Device for Window
     /// @param device Pointer to Device
-    virtual void setDevice(od::graphics::hal::Device* device) = 0;
+    virtual void setDevice(
+            std::shared_ptr <od::graphics::hal::Device> device) = 0;
 
     /// Get Device of Window
     /// @return Pointer to Device
-    virtual od::graphics::hal::Device* getDevice() = 0;
+    virtual std::shared_ptr <od::graphics::hal::Device> getDevice() = 0;
 
 protected:
     Window();
