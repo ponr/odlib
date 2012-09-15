@@ -1,10 +1,11 @@
 ODlib
 =====
 
-This is ODlib, a cross-platform game engine library project which aims in fast 
-prototyping of games. Currently supported platforms are Android, GNU/Linux, Mac OS X
-and Windows. Virtually library could be quite easily ported to any platform that 
-supports OpenGL 3 or 4 or ES 2 with native C++ code.
+This is ODlib, a modern cross-platform graphics/game engine framework library.
+Currently project aims to support Android, GNU/Linux, Mac OS X and Windows. 
+Windows-port aims to support both OpenGL and Direct3D. In practice, library
+could be quite easily ported to any platform that supports 
+OpenGL 3 or 4 or ES 2 with native C++ code.
 
 License
 -------
@@ -15,6 +16,7 @@ Requirements
 ------------
 
 General
+- Compiler with decent C++11 support (recent versions of Clang or GCC)
 - Boost (filesystem, foreach, threads, test, date-time)
 - CMake
 - libjpeg (for jpeg texture support)
@@ -27,9 +29,10 @@ General
 
 PC-platforms (GNU/Linux, Mac OS X, Windows)
 - GLEW
-- GLFW
+- GLFW (optional)
 - OpenAL
 - OpenCL (optional)
+- Qt (optional)
 
 Android
 - Android SDK & NDK
