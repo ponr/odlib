@@ -109,6 +109,8 @@ set(OD_GRAPHICS_SRC
     od/graphics/hal/GeometryShader.hpp
     od/graphics/hal/FragmentShader.cpp
     od/graphics/hal/FragmentShader.hpp
+    od/graphics/hal/ComputeShader.cpp
+    od/graphics/hal/ComputeShader.hpp
     od/graphics/hal/ShaderProgram.cpp
     od/graphics/hal/ShaderProgram.hpp
     )
@@ -127,6 +129,8 @@ if(OPENGL_FOUND)
         od/graphics/hal/gl/GLContext.hpp
         od/graphics/hal/gl/GLTexture.cpp
         od/graphics/hal/gl/GLTexture.hpp
+        od/graphics/hal/gl/GLComputeShader.cpp
+        od/graphics/hal/gl/GLComputeShader.hpp
         od/graphics/hal/gl/GLFragmentShader.cpp
         od/graphics/hal/gl/GLFragmentShader.hpp
         od/graphics/hal/gl/GLGeometryShader.cpp
