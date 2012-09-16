@@ -9,6 +9,12 @@ if(APPLE)
     link_libraries("-stdlib=libc++")
 endif(APPLE)
 
+# Find Flex
+find_package(FLEX REQUIRED)
+
+# Find Bison
+find_package(BISON REQUIRED)
+
 # Find Boost
 set(BOOSTCOMPONENTS system filesystem thread signals)
 
