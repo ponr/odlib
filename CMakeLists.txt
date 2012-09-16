@@ -1,13 +1,18 @@
 cmake_minimum_required (VERSION 2.8)
+
 project (odlib)
 
 # Use C++11
-add_definitions("-std=c++0x")
+set(MY_CXXFLAGS "-std=c++0x")
 
 if(APPLE)
-    add_definitions("-stdlib=libc++")
+    set(MY_CXXFLAGS "${MY_CXXFLAGS} -stdlib=libc++")
     link_libraries("-stdlib=libc++")
 endif(APPLE)
+
+set(CMAKE_CXX_FLAGS_DEBUG "-g -Wall ${CMAKE_CXX_FLAGS_DEBUG} ${MY_CXXFLAGS}")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${MY_CXXFLAGS}")
+set(CMAKE_BUILD_TYPE debug)
 
 # Find Flex
 find_package(FLEX REQUIRED)
