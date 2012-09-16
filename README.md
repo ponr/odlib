@@ -17,6 +17,8 @@ Requirements
 
 General
 - Compiler with decent C++11 support (recent versions of Clang or GCC)
+- Flex
+- Bison
 - Boost (filesystem, foreach, threads, test, date-time)
 - CMake
 - libjpeg (for jpeg texture support)
