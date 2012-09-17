@@ -11,7 +11,7 @@ namespace platform {
 GLQtWindow::GLQtWindow(QWidget* parent) :
     GLWindow(),
     mWidget(0),
-    mDevice(0)
+    mDevice()
 {
     // Setting vsync on
     QGLFormat format;
