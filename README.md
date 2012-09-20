@@ -1,6 +1,8 @@
 ODlib
 =====
 
+WORK IN PROGRESS.
+
 This is ODlib, a modern cross-platform graphics/game engine framework library.
 Currently project aims to support Android, GNU/Linux, Mac OS X and Windows. 
 Windows-port aims to support both OpenGL and Direct3D. In practice, library
