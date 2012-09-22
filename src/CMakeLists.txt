@@ -115,6 +115,8 @@ set(OD_GRAPHICS_SRC
     od/graphics/hal/ShaderProgram.hpp
     od/graphics/odsl/ShaderCompiler.cpp
     od/graphics/odsl/ShaderCompiler.hpp
+    od/graphics/odsl/odsl.l
+    od/graphics/odsl/odsl.y
     )
 set(OD_GRAPHICS_LIBRARIES "" )
 
