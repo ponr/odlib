@@ -176,7 +176,7 @@ endif()
 
 # Flex and Bison for ODSL Compiler
 BISON_TARGET(ODSL_PARSER od/graphics/odsl/odsl.y
-    ${CMAKE_CURRENT_BINARY_DIR}/odsl.parser.cpp)
+    ${CMAKE_CURRENT_BINARY_DIR}/odsl.parser.c)
 FLEX_TARGET(ODSL_SCANNER od/graphics/odsl/odsl.l
     ${CMAKE_CURRENT_BINARY_DIR}/odsl.lexer.c)
 ADD_FLEX_BISON_DEPENDENCY(ODSL_SCANNER ODSL_PARSER)
