@@ -14,14 +14,8 @@ set(CMAKE_CXX_FLAGS_DEBUG "-g -Wall ${CMAKE_CXX_FLAGS_DEBUG} ${MY_CXXFLAGS}")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${MY_CXXFLAGS}")
 set(CMAKE_BUILD_TYPE debug)
 
-# Find Flex
-find_package(FLEX REQUIRED)
-
-# Find Bison
-find_package(BISON REQUIRED)
-
 # Find Boost
-set(BOOSTCOMPONENTS system filesystem thread signals)
+set(BOOSTCOMPONENTS system filesystem thread signals-mt)
 
 set(Boost_USE_MULTITHREADED ON)
 find_package(Boost 1.45.0 REQUIRED COMPONENTS ${BOOSTCOMPONENTS})

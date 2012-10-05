@@ -115,6 +115,10 @@ set(OD_GRAPHICS_SRC
     od/graphics/hal/ShaderProgram.hpp
     od/graphics/odsl/ShaderCompiler.cpp
     od/graphics/odsl/ShaderCompiler.hpp
+    od/graphics/odsl/Lexer.hpp
+    od/graphics/odsl/Grammar.hpp
+    od/graphics/odsl/Parser.cpp
+    od/graphics/odsl/Parser.hpp
     od/graphics/odsl/odsl.l
     od/graphics/odsl/odsl.y
     )
@@ -173,27 +177,6 @@ if(GLEW_FOUND)
         ${OD_GRAPHICS_LIBRARIES}
         ${GLEW_LIBRARIES})
 endif()
-
-# Flex and Bison for ODSL Compiler
-BISON_TARGET(ODSL_PARSER od/graphics/odsl/odsl.y
-    ${CMAKE_CURRENT_BINARY_DIR}/odsl.parser.c)
-FLEX_TARGET(ODSL_SCANNER od/graphics/odsl/odsl.l
-    ${CMAKE_CURRENT_BINARY_DIR}/odsl.lexer.c)
-ADD_FLEX_BISON_DEPENDENCY(ODSL_SCANNER ODSL_PARSER)
-
-include_directories(${CMAKE_CURRENT_BINARY_DIR})
-include_directories(${FLEX_INCLUDE_DIRS})
-
-set(OD_GRAPHICS_LIBRARIES
-    ${OD_GRAPHICS_LIBRARIES}
-    ${FLEX_LIBRARIES}
-    )
-
-set(OD_GRAPHICS_SRC
-    ${OD_GRAPHICS_SRC}
-    ${BISON_ODSL_PARSER_OUTPUTS}
-    ${FLEX_ODSL_SCANNER_OUTPUTS}
-    )
 
 # OD Graphics library
 add_library(od_graphics SHARED ${OD_GRAPHICS_SRC})
