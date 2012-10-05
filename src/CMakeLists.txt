@@ -119,8 +119,6 @@ set(OD_GRAPHICS_SRC
     od/graphics/odsl/Grammar.hpp
     od/graphics/odsl/Parser.cpp
     od/graphics/odsl/Parser.hpp
-    od/graphics/odsl/odsl.l
-    od/graphics/odsl/odsl.y
     )
 set(OD_GRAPHICS_LIBRARIES "" )
 
