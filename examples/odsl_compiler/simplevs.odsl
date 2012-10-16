@@ -1,0 +1,27 @@
+input
+{
+    uniform Matrix4 mvp_matrix;
+    uniform Matrix3 normal_matrix;
+    uniform Vector3 light_dir;
+
+    attribute Vector3 a_vertex;
+    attribute Vector3 a_normal;
+    attribute Vector2 a_texcoord;
+}
+
+output
+{
+    od_position;
+
+    varying float v_diffuse;
+    varying Vector2 v_texcoord;
+}
+
+main()
+{
+    Vector3 ec_normal = normalize(normal_matrix * a_normal);
+    v_diffuse = max(dot(light_dir, ec_normal), 0.0);
+    v_texcoord = a_texcoord;
+    od_position = mvp_matrix * a_vertex;
+}
+
