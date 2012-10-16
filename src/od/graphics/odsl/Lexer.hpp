@@ -5,6 +5,10 @@
 
 #include <boost/spirit/include/lex_lexertl.hpp>
 
+namespace od {
+namespace graphics {
+namespace odsl {
+
 enum TokenID
 {
     ID_STRING = 1000,
@@ -40,21 +44,25 @@ struct Lexer : boost::spirit::lex::lexer <TLexer>
 {
     Lexer()
     {
+        // Regular expressions for literals and identifiers
         this->self.add_pattern
                 ("STRING", "\\\"[^\n\"]+\\\"")
                 ("NUMBER", "[0-9]+")
                 ("IDENTIFIER", "[a-zA-Z][a-zA-Z0-9_]*")
         ;
 
+        // Set tokens to use corresponding regular expressions
         string = "{STRING}";
         number = "{NUMBER}";
         identifier = "{IDENTIFIER}";
 
+        // Single character tokens
         this->self = boost::spirit::lex::token_def<>
                 ('(') | ')' | '{' | '}' | '=' | ';'
                 | '+' | '-' | '*' | '/'
         ;
 
+        // Keyword and literal tokens
         this->self.add
                 // Keywords
                 ("input", ID_KW_INPUT)
@@ -89,6 +97,7 @@ struct Lexer : boost::spirit::lex::lexer <TLexer>
                 (identifier, ID_IDENTIFIER)
         ;
 
+        // Ignore whitespace
         this->self +=
                 boost::spirit::lex::string("[ \\t\\n]+")
                 [
@@ -97,6 +106,7 @@ struct Lexer : boost::spirit::lex::lexer <TLexer>
                 ]
         ;
 
+        // Ignore C-style comments
         this->self +=
                 boost::spirit::lex::string(
                     "\\/\\*[^*]*\\*+([^/*][^*]*\\*+)*\\/")
@@ -111,5 +121,9 @@ struct Lexer : boost::spirit::lex::lexer <TLexer>
     boost::spirit::lex::token_def <std::string> number;
     boost::spirit::lex::token_def <std::string> identifier;
 };
+
+}
+}
+}
 
 #endif /* OD_GRAPHICS_ODSL_LEXER_HPP */

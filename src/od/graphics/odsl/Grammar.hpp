@@ -5,6 +5,10 @@
 
 #include <boost/spirit/include/qi.hpp>
 
+namespace od {
+namespace graphics {
+namespace odsl {
+
 template <typename TIterator>
 struct Grammar :
         boost::spirit::qi::grammar <TIterator>
@@ -16,6 +20,7 @@ struct Grammar :
         using boost::spirit::qi::token;
         using boost::spirit::qi::lit;
 
+        // Start symbol
         start = input_block >> output_block >> *(function) >> main_function;
 
         main_function = token(ID_KW_MAIN) >> lit('(') >> lit(')')
@@ -85,33 +90,37 @@ struct Grammar :
 
     }
 
-    typedef boost::spirit::qi::rule <TIterator> RuleType;
+    typedef boost::spirit::qi::rule <TIterator> Rule;
 
-    RuleType start;
+    Rule start;
 
-    RuleType input_block;
-    RuleType input_definition;
+    Rule input_block;
+    Rule input_definition;
 
-    RuleType output_block;
-    RuleType output_definition;
+    Rule output_block;
+    Rule output_definition;
 
-    RuleType type_qualifier;
-    RuleType type;
+    Rule type_qualifier;
+    Rule type;
 
-    RuleType statement;
-    RuleType assignment;
-    RuleType if_statement;
-    RuleType while_statement;
-    RuleType call_statement;
-    RuleType return_statement;
-    RuleType var_definition;
+    Rule statement;
+    Rule assignment;
+    Rule if_statement;
+    Rule while_statement;
+    Rule call_statement;
+    Rule return_statement;
+    Rule var_definition;
 
-    RuleType argument;
-    RuleType expression;
+    Rule argument;
+    Rule expression;
 
-    RuleType function;
-    RuleType main_function;
-    RuleType function_body;
+    Rule function;
+    Rule main_function;
+    Rule function_body;
 };
+
+}
+}
+}
 
 #endif /* OD_GRAPHICS_ODSL_GRAMMAR_HPP */
