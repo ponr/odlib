@@ -13,6 +13,9 @@ namespace odsl {
 class Parser
 {
 public:
+    /// Constructor
+    explicit Parser();
+
     /// Parse ODSL code
     /// @param src Source code
     void parse(const std::string& src);

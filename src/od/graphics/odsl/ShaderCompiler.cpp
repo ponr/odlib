@@ -1,4 +1,5 @@
 #include "ShaderCompiler.hpp"
+#include "Parser.hpp"
 
 namespace od {
 namespace graphics {
@@ -22,6 +23,9 @@ void ShaderCompiler::setSource(const std::string& src)
 
 bool ShaderCompiler::compile()
 {
+    Parser p;
+    p.parse(mSource);
+
     return false;
 }
 

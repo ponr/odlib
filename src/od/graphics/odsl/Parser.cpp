@@ -6,14 +6,16 @@ namespace od {
 namespace graphics {
 namespace odsl {
 
+Parser::Parser()
+{
+}
+
 void Parser::parse(const std::string &src)
 {
     typedef boost::spirit::lex::lexertl::token<
             const char*, boost::mpl::vector<std::string> >
             TokenType;
-
-    typedef boost::spirit::lex::lexertl::lexer<TokenType> LexerType;
-
+    typedef boost::spirit::lex::lexertl::actor_lexer<TokenType> LexerType;
     typedef Lexer<LexerType>::iterator_type IteratorType;
 
     Lexer<LexerType> lexer;
@@ -30,7 +32,7 @@ void Parser::parse(const std::string &src)
         // TODO: Better error reporting facilities
         std::string rest(first, last);
         std::cerr << "Parsing failed\n"
-                  << "stopped at: \""
+                  << "stopped at: " << std::endl
                   << rest << std::endl;
     }
 
