@@ -1,3 +1,5 @@
+#define BOOST_SPIRIT_DEBUG
+#define BOOST_SPIRIT_DEBUG_OUT std::cout
 #include "Parser.hpp"
 #include "Lexer.hpp"
 #include "Grammar.hpp"

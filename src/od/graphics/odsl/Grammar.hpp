@@ -3,6 +3,7 @@
 #ifndef OD_GRAPHICS_ODSL_GRAMMAR_HPP
 #define OD_GRAPHICS_ODSL_GRAMMAR_HPP
 
+#include <boost/spirit/include/phoenix.hpp>
 #include <boost/spirit/include/qi.hpp>
 
 namespace od {
@@ -15,13 +16,22 @@ struct Grammar :
 {
     template <typename TTokenDef>
     Grammar(const TTokenDef& tok)
-        : Grammar::base_type(start)
+        : Grammar::base_type(odsl)
     {
         using boost::spirit::qi::token;
         using boost::spirit::qi::lit;
+        using boost::spirit::qi::on_error;
+        using boost::spirit::qi::fail;
+        using boost::spirit::qi::debug;
+        using boost::phoenix::val;
+        using boost::phoenix::construct;
+        using namespace boost::spirit::qi::labels;
 
         // Start symbol
-        start = input_block >> output_block >> *(function) >> main_function;
+        odsl = input_block
+                >> output_block
+                >> *(function)
+                >> main_function;
 
         main_function = token(ID_KW_MAIN) >> lit('(') >> lit(')')
                                           >> function_body;
@@ -59,46 +69,116 @@ struct Grammar :
                 >> lit('}');
 
         output_definition = ((type_qualifier >> type >> tok.identifier)
-                | token(ID_KW_OD_POSITION)) >> lit(';');
+                | builtin_output_var) >> lit(';');
+
+        builtin_output_var = token(ID_KW_OD_POSITION);
 
         statement =
-                (assignment | if_statement | while_statement
-                | call_statement | return_statement | var_definition)
-                >> lit(';');
+                ( var_definition | assignment /*| if_statement
+                | while_statement*/
+                | call_statement /*| return_statement*/ )
+                > lit(';');
 
-        assignment = tok.identifier >> lit('=') >> expression;
+        assignment = (tok.identifier | builtin_output_var)
+                >> lit('=') > expression;
 
-        call_statement = tok.identifier
-                >> lit('(')
-                >> *(argument >> lit(','))
-                >> argument
-                >> lit(')');
+        call_statement =
+                (tok.identifier >> lit('(') >> lit(')'))
+                | (tok.identifier >> lit('(') >> argument_list >> lit(')'));
 
-        var_definition = type >> (tok.identifier | assignment);
+        var_definition = type >> assignment;
+
+        argument_list = *(argument >> lit(',')) >> argument;
 
         argument = expression.alias();
 
         expression =
-                (expression >> lit('+') >> expression)
-                | (expression >> lit('-') >> expression)
-                | (expression >> lit('*') >> expression)
-                | (expression >> lit('/') >> expression)
-                | (lit('(') >> expression >> lit(')'))
-                | tok.identifier
-                | tok.number
-                | call_statement;
+                expression_add
+                | expression_multiply
+                | expression_value;
 
+        expression_add =
+                (expression_value >> lit('+') >> expression_value)
+                | (expression_value >> lit('-') >> expression_value);
+        expression_multiply =
+                (expression_value >> lit('*') >> expression_value)
+                | (expression_value >> lit('/') >> expression_value);
+
+        expression_value =
+                (lit('(') > expression > lit(')'))
+                | call_statement
+                | tok.identifier
+                | tok.float_
+                | tok.number;
+
+        odsl.name("odsl");
+        input_block.name("input_block");
+        input_definition.name("input_definition");
+        output_block.name("output_block");
+        output_definition.name("output_definition");
+        builtin_output_var.name("builtin_output_var");
+        type_qualifier.name("type_qualifier");
+        type.name("type");
+        statement.name("statement");
+        assignment.name("assignment");
+        call_statement.name("call_statement");
+        var_definition.name("var_definition");
+        argument_list.name("argument_list");
+        argument.name("argument");
+        expression.name("expression");
+        expression_add.name("expression_add");
+        expression_multiply.name("expression_multiply");
+        expression_value.name("expression_value");
+        main_function.name("main_function");
+        function_body.name("function_body");
+
+        /*
+        debug(odsl);
+        debug(input_block);
+        debug(input_definition);
+        debug(output_block);
+        debug(output_definition);
+        debug(builtin_output_var);
+        debug(type_qualifier);
+        debug(type);
+        debug(statement);
+        debug(assignment);
+        debug(call_statement);
+        debug(var_definition);
+        debug(argument_list);
+        debug(argument);
+        debug(expression);
+        debug(expression_add);
+        debug(expression_multiply);
+        debug(expression_value);
+        debug(main_function);
+        debug(function_body);
+        */
+
+        on_error<fail>
+        (
+            odsl
+          , std::cout
+                << val("Error! Expecting ")
+                << _4                               // what failed?
+                << val(" here: \"")
+                << construct<std::string>(_3, _2)   // iterators to error-pos, end
+                << val("\"")
+                << std::endl
+        );
     }
 
     typedef boost::spirit::qi::rule <TIterator> Rule;
 
-    Rule start;
+    Rule odsl;
 
     Rule input_block;
     Rule input_definition;
 
     Rule output_block;
     Rule output_definition;
+
+    Rule builtin_output_var;
 
     Rule type_qualifier;
     Rule type;
@@ -111,8 +191,12 @@ struct Grammar :
     Rule return_statement;
     Rule var_definition;
 
+    Rule argument_list;
     Rule argument;
     Rule expression;
+    Rule expression_add;
+    Rule expression_multiply;
+    Rule expression_value;
 
     Rule function;
     Rule main_function;

@@ -11,7 +11,7 @@ namespace odsl {
 
 enum TokenID
 {
-    ID_STRING = 1000,
+    ID_FLOAT = 1000,
     ID_NUMBER,
     ID_IDENTIFIER,
     ID_KW_INPUT,
@@ -46,20 +46,20 @@ struct Lexer : boost::spirit::lex::lexer <TLexer>
     {
         // Regular expressions for literals and identifiers
         this->self.add_pattern
-                ("STRING", "\\\"[^\n\"]+\\\"")
+                ("FLOAT", "[0-9]+\\.[0-9]+")
                 ("NUMBER", "[0-9]+")
                 ("IDENTIFIER", "[a-zA-Z][a-zA-Z0-9_]*")
         ;
 
         // Set tokens to use corresponding regular expressions
-        string = "{STRING}";
+        float_ = "{FLOAT}";
         number = "{NUMBER}";
         identifier = "{IDENTIFIER}";
 
         // Single character tokens
         this->self = boost::spirit::lex::token_def<>
                 ('(') | ')' | '{' | '}' | '=' | ';'
-                | '+' | '-' | '*' | '/'
+                | '+' | '-' | '*' | '/' | ','
         ;
 
         // Keyword and literal tokens
@@ -92,7 +92,7 @@ struct Lexer : boost::spirit::lex::lexer <TLexer>
                 // Output literal keywords
                 ("od_position", ID_KW_OD_POSITION)
 
-                (string, ID_STRING)
+                (float_, ID_FLOAT)
                 (number, ID_NUMBER)
                 (identifier, ID_IDENTIFIER)
         ;
@@ -117,7 +117,7 @@ struct Lexer : boost::spirit::lex::lexer <TLexer>
         ;
     }
 
-    boost::spirit::lex::token_def <std::string> string;
+    boost::spirit::lex::token_def <std::string> float_;
     boost::spirit::lex::token_def <std::string> number;
     boost::spirit::lex::token_def <std::string> identifier;
 };
