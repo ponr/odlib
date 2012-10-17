@@ -6,26 +6,28 @@
 #include <boost/spirit/include/phoenix.hpp>
 #include <boost/spirit/include/qi.hpp>
 
+namespace qi = boost::spirit::qi;
+
 namespace od {
 namespace graphics {
 namespace odsl {
 
 template <typename TIterator>
 struct Grammar :
-        boost::spirit::qi::grammar <TIterator>
+        qi::grammar <TIterator>
 {
     template <typename TTokenDef>
     Grammar(const TTokenDef& tok)
         : Grammar::base_type(odsl)
     {
-        using boost::spirit::qi::token;
-        using boost::spirit::qi::lit;
-        using boost::spirit::qi::on_error;
-        using boost::spirit::qi::fail;
-        using boost::spirit::qi::debug;
+        using qi::token;
+        using qi::lit;
+        using qi::on_error;
+        using qi::fail;
+        using qi::debug;
         using boost::phoenix::val;
         using boost::phoenix::construct;
-        using namespace boost::spirit::qi::labels;
+        using namespace qi::labels;
 
         // Start symbol
         odsl = input_block
@@ -168,7 +170,7 @@ struct Grammar :
         );
     }
 
-    typedef boost::spirit::qi::rule <TIterator> Rule;
+    typedef qi::rule <TIterator> Rule;
 
     Rule odsl;
 
