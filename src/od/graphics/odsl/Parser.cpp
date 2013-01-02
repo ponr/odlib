@@ -26,8 +26,10 @@ void Parser::parse(const std::string &src)
     char const* first = src.c_str();
     char const* last = &first[src.size()];
 
+    boost::spirit::utree tree;
+
     bool ready = boost::spirit::lex::tokenize_and_parse(
-                first, last, lexer, grammar);
+                first, last, lexer, grammar, tree);
 
     if(!ready)
     {
@@ -36,7 +38,10 @@ void Parser::parse(const std::string &src)
         std::cerr << "Parsing failed\n"
                   << "stopped at: " << std::endl
                   << rest << std::endl;
+        return;
     }
+
+    std::cout << tree << std::endl;
 
     return;
 }

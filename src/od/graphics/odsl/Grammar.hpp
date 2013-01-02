@@ -5,6 +5,7 @@
 
 #include <boost/spirit/include/phoenix.hpp>
 #include <boost/spirit/include/qi.hpp>
+#include <boost/spirit/include/support_utree.hpp>
 
 namespace qi = boost::spirit::qi;
 
@@ -12,9 +13,9 @@ namespace od {
 namespace graphics {
 namespace odsl {
 
-template <typename TIterator>
+template <typename Iterator>
 struct Grammar :
-        qi::grammar <TIterator>
+        qi::grammar <Iterator, boost::spirit::utree()>
 {
     template <typename TTokenDef>
     Grammar(const TTokenDef& tok)
@@ -31,9 +32,9 @@ struct Grammar :
 
         // Start symbol
         odsl = input_block
-                >> output_block
+                > output_block
                 >> *(function)
-                >> main_function;
+                > main_function;
 
         main_function = token(ID_KW_MAIN) >> lit('(') >> lit(')')
                                           >> function_body;
@@ -63,15 +64,17 @@ struct Grammar :
                | token(ID_TYPE_MATRIX4)
                | token(ID_TYPE_TEXTURE2D);
 
-        input_definition = type_qualifier >> type >> tok.identifier
-                                          >> lit(';');
+        identifier = tok.identifier;
+
+        input_definition = type_qualifier > type > tok.identifier
+                                          > lit(';');
         output_block = token(ID_KW_OUTPUT)
                 >> lit('{')
                 >> *(output_definition)
                 >> lit('}');
 
-        output_definition = ((type_qualifier >> type >> tok.identifier)
-                | builtin_output_var) >> lit(';');
+        output_definition = ((type_qualifier > type > tok.identifier)
+                | builtin_output_var) > lit(';');
 
         builtin_output_var = token(ID_KW_OD_POSITION);
 
@@ -85,8 +88,7 @@ struct Grammar :
                 >> lit('=') > expression;
 
         call_statement =
-                (tok.identifier >> lit('(') >> lit(')'))
-                | (tok.identifier >> lit('(') >> argument_list >> lit(')'));
+                tok.identifier >> lit('(') >> -argument_list >> lit(')');
 
         var_definition = type >> assignment;
 
@@ -170,39 +172,39 @@ struct Grammar :
         );
     }
 
-    typedef qi::rule <TIterator> Rule;
+    qi::rule <Iterator, boost::spirit::utree()> odsl;
 
-    Rule odsl;
+    qi::rule <Iterator> input_block;
+    qi::rule <Iterator> input_definition;
 
-    Rule input_block;
-    Rule input_definition;
+    qi::rule <Iterator> output_block;
+    qi::rule <Iterator> output_definition;
 
-    Rule output_block;
-    Rule output_definition;
+    qi::rule <Iterator, int> builtin_output_var;
 
-    Rule builtin_output_var;
+    qi::rule <Iterator, int> type_qualifier;
+    qi::rule <Iterator, int> type;
 
-    Rule type_qualifier;
-    Rule type;
+    qi::rule <Iterator, std::string> identifier;
 
-    Rule statement;
-    Rule assignment;
-    Rule if_statement;
-    Rule while_statement;
-    Rule call_statement;
-    Rule return_statement;
-    Rule var_definition;
+    qi::rule <Iterator> statement;
+    qi::rule <Iterator> assignment;
+    qi::rule <Iterator> if_statement;
+    qi::rule <Iterator> while_statement;
+    qi::rule <Iterator> call_statement;
+    qi::rule <Iterator> return_statement;
+    qi::rule <Iterator> var_definition;
 
-    Rule argument_list;
-    Rule argument;
-    Rule expression;
-    Rule expression_add;
-    Rule expression_multiply;
-    Rule expression_value;
+    qi::rule <Iterator> argument_list;
+    qi::rule <Iterator> argument;
+    qi::rule <Iterator> expression;
+    qi::rule <Iterator> expression_add;
+    qi::rule <Iterator> expression_multiply;
+    qi::rule <Iterator> expression_value;
 
-    Rule function;
-    Rule main_function;
-    Rule function_body;
+    qi::rule <Iterator> function;
+    qi::rule <Iterator> main_function;
+    qi::rule <Iterator> function_body;
 };
 
 }
