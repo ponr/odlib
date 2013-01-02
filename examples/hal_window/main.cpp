@@ -4,7 +4,6 @@
 #include <od/platform/Window.hpp>
 #include <od/graphics/hal/Device.hpp>
 #include <od/graphics/hal/Context.hpp>
-#include <QApplication>
 #include <memory>
 
 using od::platform::Application;
