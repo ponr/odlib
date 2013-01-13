@@ -174,37 +174,37 @@ struct Grammar :
 
     qi::rule <Iterator, boost::spirit::utree()> odsl;
 
-    qi::rule <Iterator> input_block;
-    qi::rule <Iterator> input_definition;
+    qi::rule <Iterator, boost::spirit::utree> input_block;
+    qi::rule <Iterator, boost::spirit::utree> input_definition;
 
-    qi::rule <Iterator> output_block;
-    qi::rule <Iterator> output_definition;
+    qi::rule <Iterator, boost::spirit::utree> output_block;
+    qi::rule <Iterator, boost::spirit::utree> output_definition;
 
     qi::rule <Iterator, int> builtin_output_var;
 
     qi::rule <Iterator, int> type_qualifier;
     qi::rule <Iterator, int> type;
 
-    qi::rule <Iterator, std::string> identifier;
+    qi::rule <Iterator, boost::spirit::utf8_string_type()> identifier;
 
-    qi::rule <Iterator> statement;
-    qi::rule <Iterator> assignment;
-    qi::rule <Iterator> if_statement;
-    qi::rule <Iterator> while_statement;
-    qi::rule <Iterator> call_statement;
-    qi::rule <Iterator> return_statement;
-    qi::rule <Iterator> var_definition;
+    qi::rule <Iterator, boost::spirit::utree> statement;
+    qi::rule <Iterator, boost::spirit::utree> assignment;
+    qi::rule <Iterator, boost::spirit::utree> if_statement;
+    qi::rule <Iterator, boost::spirit::utree> while_statement;
+    qi::rule <Iterator, boost::spirit::utree> call_statement;
+    qi::rule <Iterator, boost::spirit::utree> return_statement;
+    qi::rule <Iterator, boost::spirit::utree> var_definition;
 
-    qi::rule <Iterator> argument_list;
-    qi::rule <Iterator> argument;
-    qi::rule <Iterator> expression;
-    qi::rule <Iterator> expression_add;
-    qi::rule <Iterator> expression_multiply;
-    qi::rule <Iterator> expression_value;
+    qi::rule <Iterator, boost::spirit::utree> argument_list;
+    qi::rule <Iterator, boost::spirit::utree> argument;
+    qi::rule <Iterator, boost::spirit::utree> expression;
+    qi::rule <Iterator, boost::spirit::utree> expression_add;
+    qi::rule <Iterator, boost::spirit::utree> expression_multiply;
+    qi::rule <Iterator, boost::spirit::utree> expression_value;
 
-    qi::rule <Iterator> function;
-    qi::rule <Iterator> main_function;
-    qi::rule <Iterator> function_body;
+    qi::rule <Iterator, boost::spirit::utree> function;
+    qi::rule <Iterator, boost::spirit::utree> main_function;
+    qi::rule <Iterator, boost::spirit::utree> function_body;
 };
 
 }
